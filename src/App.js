@@ -4,6 +4,8 @@ import { data } from './data';
 import logo from "./images/estee-lauder-logo-vector.svg"
 import { BsFillPersonFill } from "react-icons/bs"
 import { AiOutlineShoppingCart } from "react-icons/ai"
+import { AiOutlineMinus } from "react-icons/ai"
+import { AiOutlinePlus } from "react-icons/ai"
 
 import './App.css';
 
@@ -46,15 +48,20 @@ function App() {
   const [products] = useState(data)
 
   const [value, setValue] = useState(0)
-  const{mainImage} = products[value]
+  const { mainImage } = products[value]
+  const [amount, setAmount] = useState(0)
 
+  const handleMinus = () => {
+    setAmount(amount - 1)
+    if(amount <= 0) setAmount(0)
+}
   return (
 		<>
 			<Header></Header>
 
 			<section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
 				<article>
-					<img src={mainImage} alt="" className="w-11/12 rounded-2xl"></img>
+					<img src={mainImage} alt="" className="w-full rounded-2xl"></img>
 					<ul className="flex items-center justify-start gap-5 flex-wrap  mt-5">
 						{products.map((item, index) => (
 							<li
@@ -69,8 +76,47 @@ function App() {
 						))}
 					</ul>
 				</article>
-				<article>
-					<h1>Lorem reorzoruzorz</h1>
+				<article className="px-8 pb-10">
+					<h2 className="bg-slate-100 py-1 px-2 text-orange-600 uppercase tracking-wide text-sm font-bold inline-block rounded shadow mb-10">
+						ESTÉE LAUDER
+					</h2>
+					<h1 className="text-slate-900 mb-10 font-bold text-3xl lg:text-4xl">
+						DOUBLE WEAR STAY-IN-PLACE MAKEUP SPF10 30ML - Fond de teint
+					</h1>
+
+					<div className="flex flex-wrap items-center justify-between">
+						<ul className="flex items-center gap-4">
+							<li className="font-bold text-slate-900 text-2xl">23.5€</li>
+							<li className="bg-orange-100 py-1 px-2 text-orange-400 uppercase tracking-wide text-sm font-bold inline-block rounded shadow">
+								30%
+							</li>
+						</ul>
+						<p className="text-slate-600 text-sm">
+							<s>42.50€</s>
+						</p>
+					</div>
+					<div className="mt-10">
+						<ul className="flex items-center justify-between bg-slate-100 py-2 px-4 rounded shadow">
+							<li
+								onClick={handleMinus}
+								className="text-orange-600 cursor-pointer"
+							>
+								<AiOutlineMinus />
+							</li>
+							<li>{amount}</li>
+							<li
+								onClick={() => setAmount(amount + 1)}
+								className="text-orange-600 cursor-pointer"
+							>
+								<AiOutlinePlus />
+							</li>
+							<li></li>
+						</ul>
+
+						<button className="flex items-center justify-center gap-4 bg-orange-400 py-2 px-4 text-white font-bold rounded-lg shadow mt-4 w-full">
+							<AiOutlineShoppingCart /> Ajouter au panier
+						</button>
+					</div>
 				</article>
 			</section>
 		</>
