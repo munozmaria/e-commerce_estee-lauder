@@ -6,6 +6,8 @@ import { BsFillPersonFill } from "react-icons/bs"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { AiOutlineMinus } from "react-icons/ai"
 import { AiOutlinePlus } from "react-icons/ai"
+import { BsChevronRight } from "react-icons/bs"
+import { BsChevronLeft } from "react-icons/bs"
 
 import './App.css';
 
@@ -15,7 +17,7 @@ function Header() {
 			<header className="flex items-center justify-between p-8 border-b border-slate-400 max-w-6xl mx-auto">
 				<div className="flex items-center justify-start gap-4">
 					<img src={logo} className="w-20" alt=""></img>
-					<nav>
+					<nav className="hidden">
 						<ul className="flex items-center justify-start gap-4">
 							<li>Accueil</li>
 							<li>Shopping</li>
@@ -28,11 +30,11 @@ function Header() {
 				<div>
 					<ul>
 						<li className="flex items-center justify-start gap-4">
-							<button>
-								<AiOutlineShoppingCart />
+							<button   >
+								<AiOutlineShoppingCart className="text-2xl text-slate-600" />
 							</button>
-							<button>
-								<BsFillPersonFill />
+							<button  >
+								<BsFillPersonFill className="text-2xl  text-slate-600" />
 							</button>
 						</li>
 						<li></li>
@@ -59,10 +61,24 @@ function App() {
 		<>
 			<Header></Header>
 
-			<section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+			<section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:mt-10">
 				<article>
-					<img src={mainImage} alt="" className="w-full rounded-2xl"></img>
-					<ul className="flex items-center justify-start gap-5 flex-wrap  mt-5">
+					<div className="relative">
+						<img src={mainImage} alt="" className="w-full lg:rounded-2xl"></img>
+						<ul>
+							<li>
+								<button className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 ">
+									<BsChevronRight />
+								</button>
+							</li>
+							<li>
+								<button className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2">
+									<BsChevronLeft />
+								</button>
+							</li>
+						</ul>
+					</div>
+					<ul className="hidden lg:flex items-center justify-start gap-5 flex-wrap  mt-5">
 						{products.map((item, index) => (
 							<li
 								key={item.id}
