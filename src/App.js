@@ -52,21 +52,26 @@ function App() {
 		<>
 			<Header></Header>
 
-			<section className='max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10'>
-        <article>
-          <img src={mainImage} alt="" className='w-9/12 rounded-2xl'></img>
-          <ul className='flex items-center justify-start gap-5 flex-wrap cursor-pointer mt-5'>
-              {products.map((item, index) => (
-                
-                  <li key={item.id} onClick={() => setValue(index)}>
-                    <img src={item.thumbnail} alt="" className='w-20 rounded-xl'></img>
-                  </li>
-              ))}
-            </ul>
-        </article>
-        <article>
-          <h1>Lorem reorzoruzorz</h1>
-        </article>
+			<section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+				<article>
+					<img src={mainImage} alt="" className="w-11/12 rounded-2xl"></img>
+					<ul className="flex items-center justify-start gap-5 flex-wrap  mt-5">
+						{products.map((item, index) => (
+							<li
+								key={item.id}
+								onClick={() => setValue(index)}
+								className={`${
+									index === value && "border-2 border-orange-300 opacity-80"
+								} border-2 rounded-2xl overflow-hidden cursor-pointer`}
+							>
+								<img src={item.thumbnail} alt="" className="w-20 "></img>
+							</li>
+						))}
+					</ul>
+				</article>
+				<article>
+					<h1>Lorem reorzoruzorz</h1>
+				</article>
 			</section>
 		</>
 	)
