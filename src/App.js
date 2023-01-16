@@ -91,10 +91,10 @@ function App() {
 
   const [products] = useState(data)
   const [value, setValue] = useState(0)
+  const { mainImage } = products[value]
   const [amount, setAmount] = useState(0)
   const [slideIndex, setSlideIndex] = useState(1)
   
-  const { mainImage } = products[value]
   const nextSlide = () => {
     if (slideIndex !== products.length) {
       setSlideIndex(slideIndex + 1)
@@ -103,7 +103,7 @@ function App() {
     }
   }
   const previousSlide = () => {
-    if (setSlideIndex !== 1) {
+    if (slideIndex !== 1) {
       setSlideIndex(slideIndex - 1)
     } else if (slideIndex === 1) {
       setSlideIndex(products.length)
@@ -119,22 +119,27 @@ function App() {
 			<Header></Header>
 
 			<section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10  lg:place-items-center lg:py-20">
-				<article>
-					<div className="relative">
-						<img src={mainImage} alt="" className="w-full lg:rounded-2xl"></img>
-						<ul>
-							<li>
-								<button className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 ">
-									<BsChevronLeft />
-								</button>
-							</li>
-							<li>
-								<button className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2">
-									<BsChevronRight />
-								</button>
-							</li>
-						</ul>
-					</div>{" "}
+			  <article>
+				  <div>
+					  {products.map((item, index) => (
+						  
+						<div key={index} className={slideIndex === index + 1 ? "relative" : "hidden"}>
+							<img src={item.mainImage} alt="" className="w-full lg:rounded-2xl"></img>
+								<ul>
+									<li>
+										<button onClick={previousSlide} className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 ">
+											<BsChevronLeft />
+										</button>
+									</li>
+									<li>
+										<button onClick={nextSlide} className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2">
+											<BsChevronRight />
+										</button>
+									</li>
+								</ul>
+						</div>
+					  ))}
+				  </div>
 					<ul className="hidden lg:flex items-center justify-start gap-5 flex-wrap  mt-5">
 						{products.map((item, index) => (
 							<li
