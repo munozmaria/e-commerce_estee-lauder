@@ -1,100 +1,33 @@
 import { useState } from 'react';
 
 import { data } from './data';
-import logo from "./images/estee-lauder-logo-vector.svg"
-import { BsFillPersonFill } from "react-icons/bs"
+
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { AiOutlineMinus } from "react-icons/ai"
 import { AiOutlinePlus } from "react-icons/ai"
 import { BsChevronRight } from "react-icons/bs"
 import { BsChevronLeft } from "react-icons/bs"
 
-import './App.css';
+
+import Lightbox from './Components/Lightbox';
+import { Header } from './Components/Header';
 
 
-function Header() {
-  return (
-		<>
-			<header className="flex items-center justify-between p-8 border-b border-slate-400 max-w-6xl mx-auto">
-				<div className="flex items-center justify-start gap-4">
-					<img src={logo} className="w-20" alt=""></img>
-					<nav className="hidden">
-						<ul className="flex items-center justify-start gap-4">
-							<li>Accueil</li>
-							<li>Shopping</li>
-							<li>Magasins</li>
-							<li>Mes favoris</li>
-							<li>Mon compte</li>
-						</ul>
-					</nav>
-				</div>
-				<div>
-					<ul>
-						<li className="flex items-center justify-start gap-4">
-							<button   >
-								<AiOutlineShoppingCart className="text-2xl text-slate-600" />
-							</button>
-							<button  >
-								<BsFillPersonFill className="text-2xl  text-slate-600" />
-							</button>
-						</li>
-						<li></li>
-					</ul>
-				</div>
-			</header>
-		</>
-	)
-}
 
-function Lightbox({products, slideIndex, nextSlide, previousSlide, index}) {
-  return (
-		<>
-			<article className="bg-black bg-opacity-75 absolute top-0 left-0 right-0 bottom-0 z-50">
-        <div>
-          {products.map((item, index) => (
-          <div
-								key={index}
-								className={slideIndex === index + 1 ? "relative" : "hidden"}
-							>
-								<img
-									src={item.mainImage}
-									alt=""
-									className="lg:rounded-2xl"
-								></img>
-								<ul >
-									<li>
-										<button
-											onClick={previousSlide}
-											className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 "
-										>
-											<BsChevronLeft />
-										</button>
-									</li>
-									<li>
-										<button
-											onClick={nextSlide}
-											className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2"
-										>
-											<BsChevronRight />
-										</button>
-									</li>
-								</ul>
-							</div>
-          ))}
-        </div>
-			</article>
-		</>
-	)
-}
+
+
 
 function App() {
 
   const [products] = useState(data)
   const [value, setValue] = useState(0)
-  const { mainImage } = products[value]
   const [amount, setAmount] = useState(0)
   const [slideIndex, setSlideIndex] = useState(1)
+  const [showLightbox, setShowLightbox] = useState(false)
+
   
+const { mainImage } = products[value]
+	
   const nextSlide = () => {
     if (slideIndex !== products.length) {
       setSlideIndex(slideIndex + 1)
@@ -117,29 +50,59 @@ function App() {
   return (
 		<>
 			<Header></Header>
+			{showLightbox && (
+				<Lightbox
+					products={products}
+					slideIndex={slideIndex}
+					nextSlide={nextSlide}
+					previousSlide={previousSlide}
+					setShowLightbox={setShowLightbox}
+				/>
+			)}
 
 			<section className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10  lg:place-items-center lg:py-20">
-			  <article>
-				  <div>
-					  {products.map((item, index) => (
-						  
-						<div key={index} className={slideIndex === index + 1 ? "relative" : "hidden"}>
-							<img src={item.mainImage} alt="" className="w-full lg:rounded-2xl"></img>
-								<ul>
+				<article>
+					<div className="lg:hidden">
+						{products.map((item, index) => (
+							<div
+								key={index}
+								className={slideIndex === index + 1 ? "relative" : "hidden"}
+							>
+								<img
+									src={item.mainImage}
+									alt=""
+									className="w-full lg:rounded-2xl  cursor-pointer"
+									onClick={() => setShowLightbox(true)}
+								></img>
+								<ul className="lg:hidden">
 									<li>
-										<button onClick={previousSlide} className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 ">
+										<button
+											onClick={previousSlide}
+											className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 "
+										>
 											<BsChevronLeft />
 										</button>
 									</li>
 									<li>
-										<button onClick={nextSlide} className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2">
+										<button
+											onClick={nextSlide}
+											className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2"
+										>
 											<BsChevronRight />
 										</button>
 									</li>
 								</ul>
-						</div>
-					  ))}
-				  </div>
+							</div>
+						))}
+					</div>
+					<div className="hidden lg:block">
+						<img
+							src={mainImage}
+							alt=""
+							className="w-full lg:rounded-2xl cursor-pointer"
+							onClick={() => setShowLightbox(true)}
+						/>
+					</div>
 					<ul className="hidden lg:flex items-center justify-start gap-5 flex-wrap  mt-5">
 						{products.map((item, index) => (
 							<li

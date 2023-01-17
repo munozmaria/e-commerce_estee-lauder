@@ -1,0 +1,14 @@
+  .buttonClose{
+    font-size:25px;
+    position:absolute;
+    top:20px;
+    right:25px;
+  }
+@media (min-width: 1024px) {
+  .big-image {
+    height: 900px;
+    background-color: black;
+  }
+
+}
+
