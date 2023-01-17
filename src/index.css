@@ -22,16 +22,21 @@ nav {
   position: fixed;
   top: 0;
   left: -100vw;
-  width: 70%;
+  width: 50%;
   height: 100%;
   z-index: 99;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
+ 
+ 
 }
+
+
 
 nav.open {
   top: 0;
   left: 0;
   background-color: white;
+  
   @apply shadow-2xl p-8 lg:shadow-none lg:p-0;
 }
 
@@ -51,7 +56,8 @@ nav ul li {
 
 @media (min-width: 1024px) {
   .big-image {
-    height: 900px;
+    height: 100vh;
+    
   }
 
   nav {
@@ -60,14 +66,17 @@ nav ul li {
     width: auto;
     height: auto;
     z-index: auto;
+     background-color: transparent;
   }
 
   nav.open {
     background-color: transparent;
+  
   }
 
   nav ul {
     padding-top: 0;
   }
 }
+
 

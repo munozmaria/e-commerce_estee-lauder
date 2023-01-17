@@ -13,33 +13,31 @@ import { AiOutlineMenu } from "react-icons/ai"
 export const Header = () => {
 
     const [isOpen, setIsOpen] = useState(false)
-		const [cartIsOpen, setCartIsOpen] = useState(false)
+	const [cartIsOpen, setCartIsOpen] = useState(false)
 	return (
 		<>
 			<header className="relative flex items-center justify-between p-8 border-b border-slate-400 max-w-6xl mx-auto">
-				<div className="flex items-center justify-start gap-4">
-					<ul className="flex items-center justify-start gap-4">
+				<div className="flex items-center justify-start gap-4 ">
+					<ul className="flex items-center justify-start gap-4 ">
 						{!isOpen && (
 							<li onClick={() => setIsOpen(true)} className="lg:hidden">
-								<img
-									src={<AiOutlineMenu />}
-									alt=""
-									className="cursor-pointer"
-								/>
+								<button className="cursor-pointer">
+									<AiOutlineMenu />
+								</button>
 							</li>
 						)}
 						{isOpen && (
 							<li onClick={() => setIsOpen(false)} className="lg:hidden close">
-								<img src={<GrClose />} alt="" className="cursor-pointer w-6" />
+								<button className="cursor-pointer w-6 text-4xl">
+									<GrClose className='text-4xl h-4 w-5' />
+								</button>
 							</li>
 						)}
+						<img src={logo} className="w-20" alt=""></img>
 					</ul>
 
-					
-						<img src={logo} className="w-20" alt=""></img>
-			
 					<nav className={isOpen && "open"}>
-						<ul className="flex items-center justify-start gap-4 ">
+						<ul className="">
 							<li>Accueil</li>
 							<li>Shopping</li>
 							<li>Magasins</li>

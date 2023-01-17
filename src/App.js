@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import "./index.css"
 
 import { data } from './data';
 
@@ -49,9 +50,10 @@ const { mainImage } = products[value]
   }
   return (
 		<>
-			<Header></Header>
+			<Header className="relative flex items-center justify-between p-8 border-b border-slate-400 max-w-7xl mx-auto"></Header>
 			{showLightbox && (
 				<Lightbox
+					className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50"
 					products={products}
 					slideIndex={slideIndex}
 					nextSlide={nextSlide}

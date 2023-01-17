@@ -13,8 +13,7 @@ export default function Lightbox({
 	return (
 		<>
 			<article className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50">
-
-				<div className="flex items-center justify-center h-screen bg-black bg-opacity-75">
+				<div className="flex items-center justify-center h-screen  ">
 					{products.map((item, index) => (
 						<div
 							key={index}
@@ -26,18 +25,15 @@ export default function Lightbox({
 								className="big-image lg:w-full lg:rounded-2xl"
 							/>
 
-				<button
-					className=""
-					onClick={() => setShowLightbox(false)}
-				>
-					<GrClose className="buttonClose"/>
-					<button />
-				</button>
+							<button className="" onClick={() => setShowLightbox(false)}>
+								<GrClose className="buttonClose" />
+								<button />
+							</button>
 							<ul>
 								<li>
 									<button
 										onClick={previousSlide}
-										className="bg-white rounded-full p-5 shadow absolute left-4 top-1/2 -translate-y-1/2"
+										className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 "
 									>
 										<BsChevronLeft />
 									</button>
@@ -45,9 +41,9 @@ export default function Lightbox({
 								<li>
 									<button
 										onClick={nextSlide}
-										className="bg-white rounded-full p-5 shadow absolute right-4 top-1/2 -translate-y-1/2"
+										className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2"
 									>
-										<BsChevronRight />
+										<BsChevronRight  />
 									</button>
 								</li>
 							</ul>
