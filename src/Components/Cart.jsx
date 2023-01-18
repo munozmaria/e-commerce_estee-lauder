@@ -1,13 +1,13 @@
 import React from 'react'
 import image1Thumb from "../../src/images/product1-thumbnail.jpg"
 import { AiFillDelete } from "react-icons/ai"
-import { useLocalStorage } from '../useLocalStorage'
+
 
 
 export const Cart = () => {
 	const text = "Autumn Limited Edition Sneakers"
 
-	const [saveCart, setSaveCart] = useLocalStorage ('saveCart' , "")
+	
 	
 	
 		return (
