@@ -18,7 +18,12 @@ import { Header } from './Components/Header';
 
 
 
+
+
+
 function App() {
+
+	
 
   const [products] = useState(data)
   const [value, setValue] = useState(0)
@@ -49,7 +54,8 @@ const { mainImage } = products[value]
     if(amount <= 0) setAmount(0)
   }
   return (
-		<>
+	  <>
+	
 			<Header className="relative flex items-center justify-between p-8 border-b border-slate-400 max-w-7xl mx-auto"></Header>
 			{showLightbox && (
 				<Lightbox
@@ -105,7 +111,7 @@ const { mainImage } = products[value]
 							onClick={() => setShowLightbox(true)}
 						/>
 					</div>
-					<ul className="hidden lg:flex items-center justify-start gap-5 flex-wrap  mt-5">
+					<ul className="hidden lg:flex items-center p-8 justify-start gap-5 flex-wrap max-w-6xl mx-auto mt-5">
 						{products.map((item, index) => (
 							<li
 								key={item.id}
@@ -162,7 +168,8 @@ const { mainImage } = products[value]
 						</div>
 					</div>
 				</article>
-			</section>
+		  </section>
+		
 		</>
 	)
 }

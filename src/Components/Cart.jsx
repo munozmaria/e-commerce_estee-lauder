@@ -1,10 +1,15 @@
 import React from 'react'
 import image1Thumb from "../../src/images/product1-thumbnail.jpg"
 import { AiFillDelete } from "react-icons/ai"
+import { useLocalStorage } from '../useLocalStorage'
+
 
 export const Cart = () => {
-   const text = "Autumn Limited Edition Sneakers"
+	const text = "Autumn Limited Edition Sneakers"
 
+	const [saveCart, setSaveCart] = useLocalStorage ('saveCart' , "")
+	
+	
 		return (
 			<>
 				<article
@@ -17,9 +22,9 @@ export const Cart = () => {
 						Cart
 					</h2>
 
-					<div className="flex items-center justify-between">
+					<div className="flex items-center justify-between mr-4">
 						<img src={image1Thumb} alt="" className="rounded-lg w-14" />
-						<ul>
+						<ul className="" style={{ flexDirection: "column" }}>
 							<li className="text-slate-600 text-sm">{`${text.substring(
 								0,
 								23
@@ -31,7 +36,7 @@ export const Cart = () => {
 						</ul>
 
 						<button>
-							<img src={<AiFillDelete />} alt="" />
+							<AiFillDelete />
 						</button>
 					</div>
 

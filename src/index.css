@@ -13,6 +13,10 @@ ul{
   list-style:none;
 }
 
+li{
+  list-style:none;
+}
+
 body {
 
   font-family: "Kumbh Sans", sans-serif;
@@ -54,11 +58,14 @@ nav ul li {
   z-index: 999;
 }
 
+
+
 @media (min-width: 1024px) {
   .big-image {
     height: 100vh;
     
   }
+
 
   nav {
     position: relative;
@@ -78,5 +85,6 @@ nav ul li {
     padding-top: 0;
   }
 }
+
 
 
