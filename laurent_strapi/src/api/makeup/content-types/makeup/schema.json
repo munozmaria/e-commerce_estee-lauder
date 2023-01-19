@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "makeups",
+  "info": {
+    "singularName": "makeup",
+    "pluralName": "makeups",
+    "displayName": "Makeup",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Brand": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "string",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

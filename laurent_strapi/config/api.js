@@ -5,3 +5,6 @@ module.exports = {
     withCount: true,
   },
 };
+
+
+//http://localhost:1337/api/makeups?populate=*
