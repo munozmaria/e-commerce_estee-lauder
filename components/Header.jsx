@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import Image from "next/image"
 import logo from "../images/estee-lauder-logo-vector.svg"
 import { AiOutlineShoppingCart } from "react-icons/ai"
@@ -18,7 +19,7 @@ export const Header = () => {
 	const [cartIsOpen, setCartIsOpen] = useState(false)
 	return (
 		<>
-			<header className="relative flex items-center justify-between p-8 border-b border-slate-400 max-w-6xl mx-auto">
+			<header className="este-lauder-image relative flex items-center justify-between p-8 border-b border-slate-400 max-w-6xl mx-auto">
 				<div className="flex items-center justify-start gap-4 ">
 					<ul className="flex items-center justify-start gap-4 ">
 						{!isOpen && (
@@ -35,7 +36,13 @@ export const Header = () => {
 								</button>
 							</li>
 						)}
-						<Image src={logo} className="w-20 imageGlobal" alt=""></Image>
+						<Link href="/">
+							<Image
+								src={logo}
+								className="w-20 imageGlobal"
+								alt="Image Logo"
+							></Image>
+						</Link>
 					</ul>
 
 					<nav className={isOpen && "open"}>
