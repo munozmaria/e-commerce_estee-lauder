@@ -1,5 +1,5 @@
 export default function page404(props) {
 	
 
-	return <>Hola desde page404.js</>
+	return <>This page doesn't exist my friend</>
 }

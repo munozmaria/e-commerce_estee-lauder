@@ -1,6 +1,8 @@
 import "../global-styles/main.module.css"
+import "../global-styles/normalize.css"
 import "../index.css"
 import "../data"
+
 
 import Pomodoro from "../components/Pomodoro"
 
