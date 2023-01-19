@@ -48,7 +48,7 @@ export const Header = () => {
 					<nav className={isOpen && "open"}>
 						<ul className="">
 							<li>Accueil</li>
-							<li>Shopping</li>
+							<Link href="/shopping">Shopping</Link>
 							<li>Magasins</li>
 							<li>Mes favoris</li>
 							<li>Mon compte</li>
