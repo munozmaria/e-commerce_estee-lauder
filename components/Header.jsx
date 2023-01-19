@@ -18,7 +18,7 @@ export const Header = () => {
 	const [cartIsOpen, setCartIsOpen] = useState(false)
 	return (
 		<>
-			<div className="relative flex items-center justify-between p-8 border-b border-slate-400 max-w-6xl mx-auto">
+			<header className="relative flex items-center justify-between p-8 border-b border-slate-400 max-w-6xl mx-auto">
 				<div className="flex items-center justify-start gap-4 ">
 					<ul className="flex items-center justify-start gap-4 ">
 						{!isOpen && (
@@ -66,7 +66,7 @@ export const Header = () => {
 						</button>
 					</ul>
 				</div>
-			</div>
+			</header>
 		</>
 	)
 }
