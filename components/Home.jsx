@@ -72,7 +72,7 @@ export const Home = () => {
 								className={slideIndex === index + 1 ? "relative" : "hidden"}
 							>
 								<Image
-									priority={index === 42}
+									priority="true"
 									src={item.mainImage}
 									alt=""
 									className="w-full lg:rounded-2xl  cursor-pointer imageGlobal"

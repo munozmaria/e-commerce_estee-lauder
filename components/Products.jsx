@@ -12,6 +12,7 @@ export const Products = ({ item }) => {
   return (
 		<article className="lg:px-8 pb-10 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none">
 			<Image
+				priority="true"
 				className="object-contain h-70 w-96"
 				width={800}
 				height={600}
