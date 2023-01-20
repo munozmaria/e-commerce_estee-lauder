@@ -9,7 +9,7 @@ const Shopping = ({ productsApi }) => {
      return (
     <Layout >
       <main className=''>
-          <h1>Estos son los productos</h1>
+          
         <div>
              {productsApiArray.map(item => <Products
                key={item.id}
