@@ -12,15 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Brand": {
+    "brand": {
       "type": "string",
       "required": true
     },
-    "Description": {
+    "description": {
       "type": "string",
       "required": true
     },
-    "Image": {
+    "image": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -28,7 +28,7 @@
         "images"
       ]
     },
-    "Content": {
+    "content": {
       "type": "richtext",
       "required": true
     }
