@@ -5,7 +5,8 @@ import React from 'react'
 export const Products = ({ item }) => {
     console.log(item)
 
-    const { brand, content, description, id, image } = item.attributes
+    const { brand, content, description, image } = item.attributes
+    const { id } = item
   
     const imageProduit = image.data.attributes.url
    
@@ -29,7 +30,7 @@ export const Products = ({ item }) => {
 				<p className="text-slate-600 mb-10 leading-relaxed">{content}</p>
 				<Link
 					className="flex items-center justify-center gap-4 bg-orange-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-orange-600 transition-all duration-200"
-					href={`/cart${id}`}
+					href={`/makeups/${id}`}
 				>
 					Ajouter au panier
 				</Link>
