@@ -35,6 +35,15 @@
     "slug": {
       "type": "uid",
       "targetField": "description"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "discount": {
+      "type": "integer"
+    },
+    "final_price": {
+      "type": "decimal"
     }
   }
 }

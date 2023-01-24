@@ -3,6 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/makeups/[slug]": "pages/makeups/[slug].js",
-  "/": "pages/index.js",
-  "/makeups": "pages/makeups.js"
+  "/makeups": "pages/makeups.js",
+  "/": "pages/index.js"
 }

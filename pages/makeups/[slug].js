@@ -6,8 +6,15 @@ import Link from "next/link"
 
 const entrandoShopping = ({ shoppingApi, slug }) => {
   
-      const { brand, description, image, content } = 
-		shoppingApi.data[0].attributes
+      const {
+				brand,
+				description,
+				image,
+				content,
+				price,
+				discount,
+				final_price,
+			} = shoppingApi.data[0].attributes
 	
       	const imageProduit = image.data.attributes.url
   return (
@@ -33,6 +40,19 @@ const entrandoShopping = ({ shoppingApi, slug }) => {
 					<p className="text-slate-600 mb-10 leading-relaxed whitespace-normal">
 						{content}
 					</p>
+					<div className="flex flex-wrap items-center justify-between lg:flex-col lg:items-start lg:gap-2 lg:mb-6">
+						<ul className="flex items-center gap-4">
+							<li className="font-bold text-slate-900 text-2xl">
+								{final_price}€
+							</li>
+							<li className="bg-orange-100 py-1 px-2 text-orange-400 uppercase tracking-wide text-sm font-bold inline-block rounded shadow">
+								{discount}%
+							</li>
+						</ul>
+						<p className="text-slate-600 text-sm">
+							<s>{price}€</s>
+						</p>
+					</div>
 					<button className="flex items-center justify-center gap-4 bg-orange-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-orange-600 transition-all duration-200">
 						Add to bag
 					</button>
