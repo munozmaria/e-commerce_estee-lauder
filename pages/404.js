@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Header } from "../components/Header";
 import Layout from "../components/Layout";
 
 export default function page404(props) {

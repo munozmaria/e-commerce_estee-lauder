@@ -1,18 +1,14 @@
 
 import { Header } from "../components/Header"
-import Layout from "../components/Layout"
-
 
 import React, { useState } from "react"
 
 import Image from "next/image"
 
-
-
 import Lightbox from "../components/Lightbox"
 
 
-import { data } from "../data"
+
 
 
 import { AiOutlineShoppingCart } from "react-icons/ai"
@@ -20,9 +16,7 @@ import { AiOutlineMinus } from "react-icons/ai"
 import { AiOutlinePlus } from "react-icons/ai"
 import { BsChevronRight } from "react-icons/bs"
 import { BsChevronLeft } from "react-icons/bs"
-import { Products } from "../components/Products"
-import { GrHome } from "react-icons/gr"
-import { Home } from "../components/Home"
+
 
 
 
