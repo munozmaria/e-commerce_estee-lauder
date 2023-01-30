@@ -15,8 +15,8 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 	return (
 		<>
 			<Header></Header>
-			<div className="lg:px-8 pb-10 gap-10 place-items-center grid-cols-none max-w-7xl m-8">
-				<h1 className="mb-10 font-bold text-3xl lg:text-5xl text-center text-orange-700">
+			<div className=" px-8 pb-10 mt-4 max-w-6xl mx-auto gap-8 place-items-center">
+				<h1 className=" mb-10 font-bold text-3xl lg:text-5xl text-center text-orange-700">
 					Cart
 				</h1>
 				<main className="grid grid-cols-2 gap-20 items-start">
