@@ -2,6 +2,7 @@
 import image1Thumb from "../images/pic3-thumbnail.jpg"
 import { AiFillDelete } from "react-icons/ai"
 import Image from "next/image"
+import Link from "next/link"
 
 
 export const Cart = () => {
@@ -19,7 +20,7 @@ export const Cart = () => {
 					}}
 				>
 					<h2 className="border-b border-slate-400 font-bold pb-2 mb-8">
-						Cart
+						My account
 					</h2>
 
 					<div className="flex items-center justify-between mr-4">
@@ -27,6 +28,7 @@ export const Cart = () => {
 							src={image1Thumb}
 							alt=""
 							className="rounded-lg w-14 imageGlobal"
+							priority="true"
 						/>
 						<ul className="" style={{ flexDirection: "column" }}>
 							<li className="text-slate-600 text-sm">{`${text.substring(
@@ -43,10 +45,11 @@ export const Cart = () => {
 							<AiFillDelete />
 						</button>
 					</div>
-
-					<button className="bg-orange-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full hover:bg-orange-600 transition-all duration-200">
-						Checkout
-					</button>
+					<Link href="/cart">
+						<button className="bg-orange-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full hover:bg-orange-600 transition-all duration-200">
+							Checkout
+						</button>
+					</Link>
 				</article>
 			</>
 		)

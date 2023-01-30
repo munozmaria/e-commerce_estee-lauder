@@ -41,13 +41,14 @@ export const Header = () => {
 								src={logo}
 								className="w-20 imageGlobal"
 								alt="Image Logo"
+								priority="true"
 							></Image>
 						</Link>
 					</ul>
 
 					<nav className={isOpen && "open"}>
 						<ul className="">
-							<Link href="/">Accueil</Link>
+							<Link href="/accueil">Accueil</Link>
 							<Link href="/makeups">Shopping</Link>
 							<li>Magasins</li>
 							<li>Mes favoris</li>
@@ -57,20 +58,22 @@ export const Header = () => {
 				</div>
 				<div>
 					<ul className="flex items-center justify-start gap-4">
-						<li>
-							<button onClick={() => setCartIsOpen(!cartIsOpen)}>
+						<Link href="/cart">
+							<button>
 								<AiOutlineShoppingCart className="text-2xl text-slate-600" />
 							</button>
-						</li>
+						</Link>
 
 						<span>
 							{cartIsOpen && (
 								<Cart className=" bg-white rounded-2xl shadow-2xl gap-3 p-8 absolute md:w-full  lg:left-auto lg:top-20"></Cart>
 							)}
 						</span>
-						<button>
-							<BsFillPersonFill className="text-2xl  text-slate-600" />
-						</button>
+						<li>
+							<button onClick={() => setCartIsOpen(!cartIsOpen)}>
+								<BsFillPersonFill className="text-2xl  text-slate-600" />
+							</button>
+						</li>
 					</ul>
 				</div>
 			</header>

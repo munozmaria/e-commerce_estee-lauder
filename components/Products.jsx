@@ -3,15 +3,24 @@ import Link from 'next/link'
 import React from 'react'
 
 export const Products = ({ item }) => {
-    console.log(item)
+	//console.log(item)
 
-	const { brand, content, description, image, price, discount, final_price, id} = item.attributes
-	const {slug} = item.attributes
-    
-  
-    const imageProduit = image.data.attributes.url
-   
-  return (
+	const {
+		brand,
+		content,
+		description,
+		image,
+		price,
+		discount,
+		final_price,
+		id,
+	} = item.attributes
+	const { slug } = item.attributes
+
+	//console.log(image.data[0].attributes.url)
+	const imageProduit = image.data[0].attributes.url
+
+	return (
 		<article className="lg:px-8 pb-10 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none">
 			<Image
 				priority="true"
@@ -31,13 +40,15 @@ export const Products = ({ item }) => {
 				<p className="text-slate-600 mb-10 leading-relaxed">{content}</p>
 				<div className="flex flex-wrap items-center justify-between lg:flex-col lg:items-start lg:gap-2 lg:mb-6">
 					<ul className="flex items-center gap-4">
-					  <li className="font-bold text-slate-900 text-2xl">{final_price}€</li>
+						<li className="font-bold text-slate-900 text-2xl">
+							{final_price}€
+						</li>
 						<li className="bg-orange-100 py-1 px-2 text-orange-400 uppercase tracking-wide text-sm font-bold inline-block rounded shadow">
 							{discount}%
 						</li>
 					</ul>
 					<p className="text-slate-600 text-sm">
-					  <s>{price}€</s>
+						<s>{price}€</s>
 					</p>
 				</div>
 				<Link

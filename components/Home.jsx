@@ -101,11 +101,11 @@ export const Home = () => {
 					</div>
 					<div className="hidden lg:block">
 						<Image
-							
 							src={mainImage}
 							alt=""
 							className="w-full lg:rounded-2xl cursor-pointer imageGlobal"
 							onClick={() => setShowLightbox(true)}
+							priority="true"
 						/>
 					</div>
 					<ul className="hidden lg:flex items-center p-8 justify-start gap-5 flex-wrap max-w-6xl mx-auto mt-5">
@@ -118,10 +118,10 @@ export const Home = () => {
 								} border-2 rounded-2xl overflow-hidden cursor-pointer`}
 							>
 								<Image
-								
 									src={item.thumbnail}
 									alt=""
 									className="w-20 imageGlobal"
+									priority="true"
 								></Image>
 							</li>
 						))}

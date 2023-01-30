@@ -30,15 +30,20 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/accueil": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/accueil.js"
+    ],
+    "/cart": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/cart.js"
+    ],
     "/makeups": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/makeups.js"
-    ],
-    "/makeups/[slug]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/makeups/[slug].js"
     ]
   },
   "ampFirstPages": []
