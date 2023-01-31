@@ -5,6 +5,7 @@ import "../global-styles/components-styles.css"
 import "../data"
 
 
+
 export default function App({ Component, pageProps }) {
 	const [cart, setCart] = useState([]);
 	useEffect(() => {
@@ -48,12 +49,16 @@ export default function App({ Component, pageProps }) {
 	}
 
 	return (
-		<Component
-			{...pageProps}
-			cart={cart}
-			addToCart={addToCart}
-			updateQuantity={updateQuantity}
-			deleteProduct={deleteProduct}
-		></Component>
+		<>
+		
+			
+			<Component
+				{...pageProps}
+				cart={cart}
+				addToCart={addToCart}
+				updateQuantity={updateQuantity}
+				deleteProduct={deleteProduct}
+			></Component>
+		</>
 	)
 }

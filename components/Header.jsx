@@ -7,13 +7,12 @@ import { AiOutlineShoppingCart } from "react-icons/ai"
 import { BsFillPersonFill } from "react-icons/bs"
 import { GrClose } from "react-icons/gr"
 import { AiOutlineMenu } from "react-icons/ai"
-import { Cart } from './Cart'
+import { Cart } from './Cart';
 
 
 
-
-
-export const Header = () => {
+export const Header = ({ cart, deleteProduct }) => {
+	
 
     const [isOpen, setIsOpen] = useState(false)
 	const [cartIsOpen, setCartIsOpen] = useState(false)
@@ -64,16 +63,20 @@ export const Header = () => {
 							</button>
 						</Link>
 
-						<span>
-							{cartIsOpen && (
-								<Cart className=" bg-white rounded-2xl shadow-2xl gap-3 p-8 absolute md:w-full  lg:left-auto lg:top-20"></Cart>
-							)}
-						</span>
 						<li>
 							<button onClick={() => setCartIsOpen(!cartIsOpen)}>
 								<BsFillPersonFill className="text-2xl  text-slate-600" />
 							</button>
 						</li>
+							<span>
+								{cartIsOpen && (
+									<Cart
+										cart={cart}
+										deleteProduct={deleteProduct}
+										 className=" bg-white rounded-2xl shadow-2xl gap-3 p-8 absolute md:w-full  lg:left-auto lg:top-20"
+									></Cart>
+								)}
+							</span>
 					</ul>
 				</div>
 			</header>

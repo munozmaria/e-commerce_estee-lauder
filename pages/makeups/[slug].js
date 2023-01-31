@@ -1,11 +1,10 @@
 import { useState } from "react"
-import { Header } from "../../components/Header"
 import Layout from "../../components/Layout"
 import Image from "next/image"
 
 
 
-const entrandoShopping = ({ shoppingApi, addToCart }) => {
+const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct }) => {
 	//console.log(shoppingApi.data[0].id)
 	const {
 		brand,
@@ -40,9 +39,7 @@ const entrandoShopping = ({ shoppingApi, addToCart }) => {
 	}
 
 	return (
-		<Layout>
-			<Header></Header>
-
+		<Layout cart={cart} deleteProduct={deleteProduct}>
 			<article className="lg:px-8 pb-10 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none max-w-7xl m-8">
 				<Image
 					width={700}

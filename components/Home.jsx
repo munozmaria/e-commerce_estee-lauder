@@ -11,7 +11,7 @@ import { BsChevronRight } from "react-icons/bs"
 import { BsChevronLeft } from "react-icons/bs"
 
 import Lightbox from "./Lightbox"
-import { Header } from "./Header"
+
 
 export const Home = () => {
 	const [products] = useState(data)
@@ -47,11 +47,11 @@ export const Home = () => {
 	const addToCart = (e) => {
 		const productAdded = e.target.value
 		setProductAdd(productAdded)
-		console.log(productAdd)
+		//console.log(productAdd)
 	}
 	return (
 		<>
-			<Header className="relative flex items-center justify-between p-8 border-b border-slate-400 max-w-7xl mx-auto"></Header>
+			
 			{showLightbox && (
 				<Lightbox
 					className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50"

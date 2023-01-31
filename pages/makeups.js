@@ -1,15 +1,15 @@
 import React from 'react'
-import { Header } from '../components/Header'
+
 import Layout from '../components/Layout'
 import { Products } from '../components/Products'
 
 
-const Makeups = ({ productsApi }) => {
+const Makeups = ({ productsApi, cart, deleteProduct }) => {
+	console.log(productsApi)
 	const productsApiArray = productsApi.data
 
 	return (
-		<Layout>
-			<Header></Header>
+		<Layout cart={cart} deleteProduct={deleteProduct}>
 			<main className="">
 				<div>
 					{productsApiArray.map((item) => (
