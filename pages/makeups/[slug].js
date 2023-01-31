@@ -6,7 +6,7 @@ import Lightbox from "../../components/Lightbox"
 
 
 
-const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct }) => {
+const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQuantity }) => {
 	//console.log(shoppingApi.data[0].id)
 	const {
 		brand,
@@ -59,7 +59,11 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct }) => {
 		}
 
 	return (
-		<Layout cart={cart} deleteProduct={deleteProduct}>
+		<Layout
+			cart={cart}
+			deleteProduct={deleteProduct}
+			updateQuantity={updateQuantity}
+		>
 			{showLightbox && (
 				<Lightbox
 					className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50"

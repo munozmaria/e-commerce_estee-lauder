@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Layout from "../components/Layout"
+import Link from "next/link"
 
 
 const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
@@ -10,12 +11,18 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
     useEffect(() => {
         const getTotal = cart.reduce((total, item) => total + (item.quantity * item.final_price), 0)
         setTotal(getTotal)
-        }, [cart]);
+	}, [cart]);
+	
+	
    
 	//console.log(cart)
 	return (
 		<>
-			<Layout cart={cart}>
+			<Layout
+				cart={cart}
+				deleteProduct={deleteProduct}
+				updateQuantity={updateQuantity}
+			>
 				<div className=" px-8 pb-10 mt-4 max-w-6xl mx-auto gap-8 place-items-center">
 					<h1 className=" mb-20 mt-10 font-bold text-3xl lg:text-5xl text-center text-orange-700">
 						Shopping Cart
@@ -51,6 +58,7 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 														onChange={(e) =>
 															updateQuantity({
 																quantity: e.target.value,
+																defaultValue: 0,
 																id: item.id,
 															})
 														}
@@ -88,9 +96,16 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 									<p className="italic">Subtotal: {total}€</p>
 								</>
 							) : (
-								<p className="font-bold py-3">
-									Your Estee Lauder Cart is empty
-								</p>
+								<div className="flex items-center space-y-4 flex-col">
+									<h3 className="text-gray-500 text-lg font-semibold">
+										Oops... Seems your cart is empty
+									</h3>
+									<Link href="/makeups">
+										<button className=" bg-white text-orange-600 text-xs p-2 w-full lg:w-auto rounded-md hover:bg-orange-600 border border-orange-600 hover:border-white hover:text-white">
+											ADD ITEMS
+										</button>
+									</Link>
+								</div>
 							)}
 						</div>
 					</main>

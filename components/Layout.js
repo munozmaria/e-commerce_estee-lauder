@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Cart } from "./Cart";
 import { Header } from "./Header";
 
 

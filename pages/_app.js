@@ -41,7 +41,17 @@ export default function App({ Component, pageProps }) {
 		});
 		setCart(cartWithProduct)
 	}
-
+	
+	const updateQuantityCart = (product) => {
+		event.preventDefault()
+		const cartWithProduct = cart.map((makeup) => {
+			if (makeup.id === product.id) {
+				makeup.quantity = product.quantity += product.quantity
+			}
+			return makeup
+		})
+		setCart(cartWithProduct)
+	}
 	//delete product
 	const deleteProduct = id => { 
 		const updateCart = cart.filter(item => item.id !== id);
@@ -50,14 +60,13 @@ export default function App({ Component, pageProps }) {
 
 	return (
 		<>
-		
-			
 			<Component
 				{...pageProps}
 				cart={cart}
 				addToCart={addToCart}
 				updateQuantity={updateQuantity}
 				deleteProduct={deleteProduct}
+				updateQuantityCart={updateQuantityCart}
 			></Component>
 		</>
 	)

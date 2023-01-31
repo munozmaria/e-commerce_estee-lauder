@@ -11,10 +11,8 @@ import { Cart } from './Cart';
 
 
 
-export const Header = ({ cart, deleteProduct }) => {
-	
-
-    const [isOpen, setIsOpen] = useState(false)
+export const Header = ({ cart, deleteProduct, updateQuantity }) => {
+	const [isOpen, setIsOpen] = useState(false)
 	const [cartIsOpen, setCartIsOpen] = useState(false)
 	return (
 		<>
@@ -47,7 +45,6 @@ export const Header = ({ cart, deleteProduct }) => {
 
 					<nav className={isOpen && "open"}>
 						<ul className="">
-							
 							<Link href="/makeups">All</Link>
 							<li>Our shops</li>
 							<li>Gift Cards</li>
@@ -68,15 +65,16 @@ export const Header = ({ cart, deleteProduct }) => {
 								<BsFillPersonFill className="text-2xl  text-slate-600" />
 							</button>
 						</li>
-							<span>
-								{cartIsOpen && (
-									<Cart
-										cart={cart}
-										deleteProduct={deleteProduct}
-										 className=" bg-white rounded-2xl shadow-2xl gap-3 p-8 absolute md:w-full  lg:left-auto lg:top-20"
-									></Cart>
-								)}
-							</span>
+						<span>
+							{cartIsOpen && (
+								<Cart
+									cart={cart}
+									deleteProduct={deleteProduct}
+									updateQuantity={updateQuantity}
+									className=" bg-white rounded-2xl shadow-2xl gap-3 p-8 absolute md:w-full  lg:left-auto lg:top-20"
+								></Cart>
+							)}
+						</span>
 					</ul>
 				</div>
 			</header>

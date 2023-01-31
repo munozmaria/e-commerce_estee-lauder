@@ -1,17 +1,18 @@
 
-import App from "next/app";
-import { Cart } from "../components/Cart";
-import { Header } from "../components/Header";
 import { Home } from "../components/Home";
 import Layout from "../components/Layout";
 
 
 
-export default function Index({cart, deleteProduct}) {
+export default function Index({cart, deleteProduct, updateQuantity}) {
 
 	return (
 		<>
-			<Layout cart={cart} deleteProduct={deleteProduct}>
+			<Layout
+				cart={cart}
+				deleteProduct={deleteProduct}
+				updateQuantity={updateQuantity}
+			>
 				<Home></Home>
 			</Layout>
 		</>

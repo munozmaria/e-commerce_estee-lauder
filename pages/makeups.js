@@ -4,12 +4,16 @@ import Layout from '../components/Layout'
 import { Products } from '../components/Products'
 
 
-const Makeups = ({ productsApi, cart, deleteProduct }) => {
+const Makeups = ({ productsApi, cart, deleteProduct, updateQuantity }) => {
 	console.log(productsApi)
 	const productsApiArray = productsApi.data
 
 	return (
-		<Layout cart={cart} deleteProduct={deleteProduct}>
+		<Layout
+			cart={cart}
+			deleteProduct={deleteProduct}
+			updateQuantity={updateQuantity}
+		>
 			<main className="">
 				<div>
 					{productsApiArray.map((item) => (
