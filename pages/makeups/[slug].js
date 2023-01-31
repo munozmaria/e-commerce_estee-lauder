@@ -1,6 +1,8 @@
 import { useState } from "react"
 import Layout from "../../components/Layout"
 import Image from "next/image"
+import Lightbox from "../../components/Lightbox"
+
 
 
 
@@ -21,6 +23,9 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct }) => {
 
 	const imageProduit = image.data[0].attributes.url
 	const [quantity, setQuantity] = useState(1)
+	const [slideIndex, setSlideIndex] = useState(1)
+	const [value, setValue] = useState(0)
+	const [showLightbox, setShowLightbox] = useState(false)
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		if (quantity < 1) {
@@ -38,17 +43,64 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct }) => {
 		addToCart(productAdded)
 	}
 
+		const nextSlide = () => {
+			if (slideIndex !== shoppingApi.length) {
+				setSlideIndex(slideIndex + 1)
+			} else if (slideIndex === shoppingApi.length) {
+				setSlideIndex(1)
+			}
+		}
+		const previousSlide = () => {
+			if (slideIndex !== 1) {
+				setSlideIndex(slideIndex - 1)
+			} else if (slideIndex === 1) {
+				setSlideIndex(shoppingApi.length)
+			}
+		}
+
 	return (
 		<Layout cart={cart} deleteProduct={deleteProduct}>
+			{showLightbox && (
+				<Lightbox
+					className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50"
+					products={shoppingApi}
+					slideIndex={slideIndex}
+					nextSlide={nextSlide}
+					previousSlide={previousSlide}
+					setShowLightbox={setShowLightbox}
+				/>
+			)}
 			<article className="lg:px-8 pb-10 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none max-w-7xl m-8">
-				<Image
-					width={700}
-					className="object-contain h-70 w-96"
-					height={600}
-					priority="true"
-					alt={`image produit ${description}`}
-					src={imageProduit}
-				></Image>
+				<div>
+					<Image
+						width={700}
+						className="object-contain h-70 w-96"
+						height={600}
+						priority="true"
+						alt={`image produit ${description}`}
+						src={imageProduit}
+						onClick={() => setShowLightbox(true)}
+					></Image>
+					<ul className="hidden lg:flex items-center p-8 justify-start gap-5 flex-wrap max-w-6xl mx-auto mt-5">
+						{shoppingApi.data.map((item, index) => (
+							<li
+								key={id}
+								onClick={() => setValue(index)}
+								className={`${
+									index === value && "border-2 border-orange-300 opacity-80"
+								} border-2 rounded-2xl overflow-hidden cursor-pointer`}
+							>
+								<Image
+									src={item.attributes.image.data[0].attributes.url}
+									className="w-20 imageGlobal"
+									width={800}
+									height={600}
+									priority="true"
+								></Image>
+							</li>
+						))}
+					</ul>
+				</div>
 				<div>
 					<h2 className="bg-slate-100 py-1 px-2 text-orange-600 uppercase tracking-wide text-sm font-bold inline-block rounded shadow mb-10">
 						{brand}

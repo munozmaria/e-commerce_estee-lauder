@@ -17,8 +17,8 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 		<>
 			<Layout cart={cart}>
 				<div className=" px-8 pb-10 mt-4 max-w-6xl mx-auto gap-8 place-items-center">
-					<h1 className=" mb-10 font-bold text-3xl lg:text-5xl text-center text-orange-700">
-						Cart
+					<h1 className=" mb-20 mt-10 font-bold text-3xl lg:text-5xl text-center text-orange-700">
+						Shopping Cart
 					</h1>
 					<main className="grid grid-cols-2 gap-20 items-start">
 						<div className="p-4 relative">

@@ -47,11 +47,11 @@ export const Header = ({ cart, deleteProduct }) => {
 
 					<nav className={isOpen && "open"}>
 						<ul className="">
-							<Link href="/accueil">Accueil</Link>
-							<Link href="/makeups">Shopping</Link>
-							<li>Magasins</li>
-							<li>Mes favoris</li>
-							<li>Mon compte</li>
+							
+							<Link href="/makeups">All</Link>
+							<li>Our shops</li>
+							<li>Gift Cards</li>
+							<li>Sell</li>
 						</ul>
 					</nav>
 				</div>

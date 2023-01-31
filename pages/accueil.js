@@ -25,7 +25,7 @@ import Layout from "../components/Layout"
 
 
 
-const Accueil = ({ productsApi, cart, deleteProduct }) => {
+const Accueil = ({ productsApi, addToCart, cart, deleteProduct }) => {
 	const productsApiArray = productsApi.data
     //console.log(productsApi.data.length)
 	const {
@@ -36,13 +36,13 @@ const Accueil = ({ productsApi, cart, deleteProduct }) => {
 		price,
 		discount,
 		final_price,
-		id,
+		
 	} = productsApi.data[0].attributes
 	
 	
 	const imageProduit = image.data[0].attributes.url
 
-	
+	const { id } = productsApi.data[0]
 
 	const [value, setValue] = useState(0)
 	const [amount, setAmount] = useState(0)
@@ -50,6 +50,24 @@ const Accueil = ({ productsApi, cart, deleteProduct }) => {
 	const [showLightbox, setShowLightbox] = useState(false)
 
 	const [productAdd, setProductAdd] = useState("")
+
+	const [quantity, setQuantity] = useState(1)
+	const handleSubmit = (event) => {
+		event.preventDefault()
+		if (quantity < 1) {
+			alert("Invalid quantity")
+			return
+		}
+
+		const productAdded = {
+			id,
+			imageProduit,
+			description,
+			final_price,
+			quantity,
+		}
+		addToCart(productAdded)
+	}
 
 
 
@@ -68,16 +86,8 @@ const Accueil = ({ productsApi, cart, deleteProduct }) => {
 		}
 	}
 
-	const handleMinus = () => {
-		setAmount(amount - 1)
-		if (amount <= 0) setAmount(0)
-	}
+	
 
-	const addToCart = (e) => {
-		const productAdded = e.target.value
-		setProductAdd(productAdded)
-		console.log(productAdd)
-	}
  
 	//console.log(productsApi.data[0].attributes.image)
     
@@ -163,8 +173,8 @@ const Accueil = ({ productsApi, cart, deleteProduct }) => {
 								</li>
 							))}
 						</ul>
-					</article>
-					<article className="px-8 pb-10">
+					
+					<div className="px-8 pb-10">
 						<h2 className="bg-slate-100 py-1 px-2 text-orange-600 uppercase tracking-wide text-sm font-bold inline-block rounded shadow mb-10">
 							{brand}
 						</h2>
@@ -185,32 +195,28 @@ const Accueil = ({ productsApi, cart, deleteProduct }) => {
 								<s>{price}€</s>
 							</p>
 						</div>
-						<div className="mt-10 lg:flex items-center justify-between gap-2">
-							<ul className="flex items-center justify-between bg-slate-100 py-2 px-4 rounded shadow lg:flex-1">
-								<li
-									onClick={handleMinus}
-									className="text-orange-600 cursor-pointer"
-								>
-									<AiOutlineMinus />
-								</li>
-								<li>{amount}</li>
-								<li
-									onClick={() => setAmount(amount + 1)}
-									className="text-orange-600 cursor-pointer"
-								>
-									<AiOutlinePlus />
-								</li>
-								<li></li>
-							</ul>
-							<div className="lg:flex-1">
-								<button
-									className="flex items-center justify-center gap-4 bg-orange-400 py-2 px-4 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-orange-600 transition-all duration-200"
-									onChange={addToCart}
-								>
-									<AiOutlineShoppingCart /> Ajouter au panier
-								</button>
-							</div>
-						</div>
+						<form className="mt-8 flex flex-col" onSubmit={handleSubmit}>
+							<label className="mb-4">Quantity:</label>
+							<select
+								value={quantity}
+								onChange={(e) => setQuantity(parseInt(e.target.value))}
+								className="py-1 my-2 border-solid border-2 border-orange-600 flex-1  text-center rounded"
+							>
+								<option value="0">--Choose--</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<input
+								className="flex items-center justify-center gap-4 bg-orange-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-orange-600 transition-all duration-200 cursor-pointer"
+								type="submit"
+								value="Add to bag"
+							></input>
+						</form>
+						
+					</div>
 					</article>
 				</section>
 			</Layout>

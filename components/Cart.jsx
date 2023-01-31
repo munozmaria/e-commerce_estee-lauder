@@ -6,7 +6,7 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 
 
-export const Cart = ({ cart, deleteProduct }) => {
+export const Cart = ({ cart, deleteProduct, updateQuantity }) => {
 	console.log(cart)
 	const [total, setTotal] = useState(0)
 	useEffect(() => {
@@ -28,7 +28,7 @@ export const Cart = ({ cart, deleteProduct }) => {
 						}}
 					>
 						<h2 className="border-b border-slate-400 font-bold pb-2 ">
-							My account
+							Cart
 						</h2>
 
 						{cart.lenght === 0
@@ -51,6 +51,22 @@ export const Cart = ({ cart, deleteProduct }) => {
 												<span className="font-bold text-slate-900">
 													{item.final_price}€
 												</span>
+											</li>
+											<li className="text-slate-600 text-sm mt-2 ">
+												<p className="italic"
+													
+													onChange={(e) =>
+														updateQuantity({
+															quantity: e.target.value,
+															id: item.id,
+														})
+													}
+												>
+													<span className="font-bold text-slate-900">
+														{item.quantity}{" "}
+													</span>{" "}
+													item
+												</p>
 											</li>
 										</ul>
 
