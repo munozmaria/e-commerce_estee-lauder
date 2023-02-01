@@ -3,18 +3,38 @@ import { AiFillDelete } from "react-icons/ai"
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import Select from "react-select"
 
 
-export const Cart = ({ cart, updateQuantityCart, deleteProduct }) => {
-	console.log(cart)
-	const [total, setTotal] = useState(0)
-	useEffect(() => {
-		const getTotal = cart.reduce(
-			(total, item) => total + item.quantity * item.final_price,
-			0
-		)
-		setTotal(getTotal)
-	}, [cart])
+
+export const Cart = ({ cart, deleteProduct }) => {
+	
+	const objetcTE = {}
+	cart.forEach((item) => (objetcTE[item.id] = item.quantity))
+	console.log(objetcTE)
+	const [state, setState] = useState(objetcTE)
+	const handleSelectChange = (value, id) => {
+		const idFinded = cart.find((element) => element.id === id)
+		idFinded.quantity = value
+
+		setState((prevState) => ({
+			...prevState,
+			[id]: value,
+		}))
+	}
+	
+		
+
+	const suppliers = [
+		{ label: "1", value: 1 },
+		{ label: "2", value: 2 },
+		{ label: "3", value: 3 },
+		{ label: "4", value: 4 },
+	]
+
+	
+	
+	
 
 	return (
 		<>
@@ -59,23 +79,18 @@ export const Cart = ({ cart, updateQuantityCart, deleteProduct }) => {
 										</li>
 										<li className="text-slate-600 text-sm mt-2 ">
 											<div className="flex items-center gap-1 mb-2">
-												<p className="m-0">Quantity: </p>
-												<select
-													value={item.quantity}
-													onChange={(e) =>
-														updateQuantityCart({
-															quantity: e.target.value,
-															id: item.id,
-														})
-													}
-													className="py-1 my-0 border-solid border-2 border-orange-600 flex-1 rounded text-center"
-												>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-												</select>
+												<p className="m-0">Quantity: {item.quantity}</p>
+
+												<Select
+													defaultValue={{
+														label: `${item.quantity}`,
+														value: `${item.quantity}`,
+													}}
+													options={suppliers}
+													onChange={(e) => {
+														handleSelectChange(e.value, item.id)
+													}}
+												></Select>
 											</div>
 										</li>
 									</ul>
@@ -86,7 +101,7 @@ export const Cart = ({ cart, updateQuantityCart, deleteProduct }) => {
 								</div>
 							))
 						)}
-						
+
 						<div>
 							{location.pathname !== "/cart" && (
 								<Link href="/cart">

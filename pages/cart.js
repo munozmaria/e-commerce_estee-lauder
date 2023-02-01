@@ -5,7 +5,7 @@ import Link from "next/link"
 
 
 const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
-	console.log(cart)
+	//console.log(cart)
 
     const [total, setTotal] = useState(0)
     useEffect(() => {

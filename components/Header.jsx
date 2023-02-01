@@ -1,19 +1,47 @@
-
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useRef, useEffect } from "react"
+import Link from "next/link"
 import Image from "next/image"
 import logo from "../images/estee-lauder-logo-vector.svg"
 import { AiOutlineShoppingCart } from "react-icons/ai"
 import { BsFillPersonFill } from "react-icons/bs"
 import { GrClose } from "react-icons/gr"
 import { AiOutlineMenu } from "react-icons/ai"
-import { Cart } from './Cart';
-
-
+import { Cart } from "./Cart"
 
 export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [cartIsOpen, setCartIsOpen] = useState(false)
+
+	const wrapperRef = useRef(null)
+	const buttonRef = useRef(null)
+	useOutsideAlerter(wrapperRef, buttonRef)
+
+
+	function useOutsideAlerter(ref, ref2) {
+		useEffect(() => {
+			
+			function handleClickOutside(event) {
+				
+				if (
+					cartIsOpen &&
+					ref.current &&
+					!ref.current.contains(event.target) &&
+					!ref2.current.contains(event.target)
+				) {
+					setCartIsOpen(false)
+					setIsOpen(false)
+					
+				}
+			}
+		
+			document.addEventListener("mousedown", handleClickOutside)
+			return () => {
+			
+				document.removeEventListener("mousedown", handleClickOutside)
+			}
+		}, [ref, cartIsOpen])
+	}
+
 	return (
 		<>
 			<header className="este-lauder-image relative flex items-center justify-between p-8 border-b border-slate-400 max-w-6xl mx-auto">
@@ -61,11 +89,17 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 						</Link>
 
 						<li>
-							<button onClick={() => setCartIsOpen(!cartIsOpen)}>
+							<button
+								ref={buttonRef}
+								onClick={() => {
+									setCartIsOpen(!cartIsOpen)
+									setIsOpen(false)
+								} }
+							>
 								<BsFillPersonFill className="text-2xl  text-slate-600" />
 							</button>
 						</li>
-						<span>
+						<span ref={wrapperRef}>
 							{cartIsOpen && (
 								<Cart
 									cart={cart}
