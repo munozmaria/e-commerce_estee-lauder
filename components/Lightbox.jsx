@@ -11,82 +11,74 @@ export default function Lightbox({
 }) {
 	const { image } = products.data[0].attributes
 
-	const [imageProduit, setImageProduit] = useState(image.data[0].attributes.url)
-
-	const [slideIndex, setSlideIndex] = useState(1)
-	const [holaJuan, setHolaJuan] = useState(1)
+	
 
 	const productsArray = products.data
 
-	const nextSlide = () => {
-		console.log(image.data.length)
-		//console.log(products.data[0].attributes.image.data[slideIndex].attributes.url)
-		if (holaJuan !== image.data.length) {
-			console.log("hola")
-			setSlideIndex(holaJuan + 1)
-		} else if (holaJuan === image.data.length) {
-			console.log("adios")
-			setSlideIndex(1)
-		}
 
-		setImageProduit(image.data[holaJuan].attributes.url)
-		//console.log(products.data[0].attributes.image.data)
-		console.log(slideIndex)
+	const [current, setCurrent] = useState(0)
+	const length = image.data.length
+
+	function nextSlide() {
+		console.log(current)
+		setCurrent(current === length - 1 ? 0 : current + 1)
+		console.log(current, image.data[current].attributes.url)
 	}
 
-	const previousSlide = () => {
-		if (slideIndex !== 1) {
-			console.log("hola")
-			setSlideIndex(slideIndex - 1)
-		} else if (slideIndex === 1) {
-			console.log("adios")
-			setSlideIndex(products.data[0].attributes.image.data.length)
-		}
-		setImageProduit(image.data[3].attributes.url)
+	function previousSlide() {
+		setCurrent(current === 0 ? length - 1 : current - 1)
 	}
+
+
+
+	
 
 	return (
 		<>
 			<article className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50">
 				<div className="flex items-center justify-center h-screen  ">
-					{productsArray.map((item, index) => (
-						<div
-							key={index}
-							className={holaJuan === index + 1 ? "relative" : "hidden"}
-						>
+					<div>
+						{productsArray.map((item, index) => (
 							<Image
-								src={imageProduit}
+								key={item.id}
+								src={image.data[current].attributes.url}
 								width={800}
 								height={600}
 								alt=""
-								className="big-image lg:w-full lg:rounded-2xl imageGlobal"
+								className={
+									index === current
+										? "relative big-image  lg:mt-3 lg:mb-5 lg:rounded-2xl imageGlobal "
+										: "hidden" &&
+										  " big-image  lg:rounded-2xl lg:mt-3 lg:mb-5 imageGlobal"
+								}
 								priority="true"
 							/>
-
-							<button className="" onClick={() => setShowLightbox(false)}>
-								<GrClose className="buttonClose" />
-								<button />
-							</button>
-							<ul>
-								<li>
-									<button
-										onClick={previousSlide}
-										className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 "
-									>
-										<BsChevronLeft />
-									</button>
-								</li>
-								<li>
-									<button
-										onClick={nextSlide}
-										className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2"
-									>
-										<BsChevronRight />
-									</button>
-								</li>
-							</ul>
-						</div>
-					))}
+						))}
+						<button
+							className="bg-white rounded-full font-bold p-4  items-center shadow absolute top-3 right-4 text-orange-600"
+							onClick={() => setShowLightbox(false)}
+						>
+							<GrClose />
+						</button>
+						<ul>
+							<li>
+								<button
+									onClick={previousSlide}
+									className="bg-white rounded-full font-bold p-4 shadow absolute left-4 top-1/2 -translate-y-1/2 "
+								>
+									<BsChevronLeft />
+								</button>
+							</li>
+							<li>
+								<button
+									onClick={nextSlide}
+									className="bg-white rounded-full font-bold  p-4 shadow absolute right-4 top-1/2 -translate-y-1/2"
+								>
+									<BsChevronRight />
+								</button>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</article>
 		</>

@@ -79,8 +79,6 @@ export const Cart = ({ cart, deleteProduct }) => {
 										</li>
 										<li className="text-slate-600 text-sm mt-2 ">
 											<div className="flex items-center gap-1 mb-2">
-												
-
 												<Select
 													defaultValue={{
 														label: `${item.quantity}`,

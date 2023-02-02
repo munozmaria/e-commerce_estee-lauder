@@ -86,7 +86,7 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 						{thumbs.data.map((item, index) =>
 							item.attributes.image.data.map((image, index) => (
 								<li
-									key={id}
+									key={image.id}
 									onClick={() => {
 										setValue(index)
 										setImageProduit(image.attributes.url)

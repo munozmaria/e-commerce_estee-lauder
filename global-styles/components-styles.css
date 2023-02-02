@@ -33,13 +33,6 @@ nav {
  
 }
 
-  .buttonClose{
-    font-size:25px;
-    position:absolute;
-    top:20px;
-    right:25px;
-  }
-
 
 nav.open {
   top: 0;

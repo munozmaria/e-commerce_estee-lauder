@@ -109,7 +109,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 										cart={cart}
 										deleteProduct={deleteProduct}
 										updateQuantity={updateQuantity}
-										className=" bg-white rounded-2xl shadow-2xl gap-3 p-8 absolute md:w-full  lg:left-auto lg:top-20"
+										className="overflow-auto md:overflow-scroll"
 									></Cart>
 								)}
 							</span>
