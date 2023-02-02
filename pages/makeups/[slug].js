@@ -101,6 +101,7 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 										width={800}
 										height={600}
 										priority="true"
+										alt="image cart"
 									></Image>
 								</li>
 							))

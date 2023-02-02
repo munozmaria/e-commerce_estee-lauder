@@ -44,7 +44,7 @@ export default function Lightbox({
 								src={image.data[current].attributes.url}
 								width={800}
 								height={600}
-								alt=""
+								alt="image lightbox"
 								className={
 									index === current
 										? "relative big-image  lg:mt-3 lg:mb-5 lg:rounded-2xl imageGlobal "

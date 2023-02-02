@@ -74,7 +74,7 @@ export const Home = () => {
 								<Image
 									priority="true"
 									src={item.mainImage}
-									alt=""
+									alt="image"
 									className="w-full lg:rounded-2xl  cursor-pointer imageGlobal"
 									onClick={() => setShowLightbox(true)}
 								></Image>
@@ -102,7 +102,7 @@ export const Home = () => {
 					<div className="hidden lg:block">
 						<Image
 							src={mainImage}
-							alt=""
+							alt="image lightbox"
 							className="w-full lg:rounded-2xl cursor-pointer imageGlobal"
 							onClick={() => setShowLightbox(true)}
 							priority="true"
@@ -119,7 +119,7 @@ export const Home = () => {
 							>
 								<Image
 									src={item.thumbnail}
-									alt=""
+									alt="image thumbnail"
 									className="w-20 imageGlobal"
 									priority="true"
 								></Image>

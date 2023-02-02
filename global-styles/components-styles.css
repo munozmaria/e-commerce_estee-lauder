@@ -21,6 +21,9 @@ li{
   padding: 3rem 0;
 }
 */
+
+
+
 nav {
   position: fixed;
   top: 0;
@@ -63,7 +66,6 @@ nav ul li {
     height: 100vh;
     
   }
-
 
   nav {
     position: relative;

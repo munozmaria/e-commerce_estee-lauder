@@ -41,9 +41,11 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 									>
 										<div>
 											<Image
+												alt="image cart"
 												width={250}
 												height={500}
 												src={item.imageProduit}
+												priority="true"
 											></Image>
 										</div>
 
@@ -72,7 +74,7 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 												</select>
 											</div>
 											<p className="font-bold text-slate-600 text-1xl mb-2">
-												{item.final_price}€
+												Price: {item.final_price}€
 											</p>
 											<p className="font-bold">
 												Total: <span>{item.final_price * item.quantity}€</span>{" "}
@@ -91,9 +93,7 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 					<div className="bg-gray-200 pb-8 px-5 text-center rounded">
 						{total > 0 ? (
 							<>
-								<p className="font-bold mt-2 text-lg underline">
-									Total
-								</p>
+								<p className="font-bold mt-2 text-lg underline">Total</p>
 								<p className="italic">Subtotal: {total}€</p>
 							</>
 						) : (

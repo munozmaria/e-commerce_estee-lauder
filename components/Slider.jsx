@@ -1,7 +1,7 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import { Navigation, Thumbs } from "swiper";
 
-import Image from "next/image";
+
 
 import React from 'react'
 import PropTypes from 'prop-types'

@@ -41,7 +41,7 @@ export const Cart = ({ cart, deleteProduct }) => {
 			<div>
 				<div>
 					<article
-						className="bg-white rounded-2xl shadow-2xl p-8 absolute right-8 top-32 left-8 lg:w-96 lg:left-auto lg:top-20"
+						className="bg-white overflow-y-auto h-80 rounded-2xl shadow-2xl p-8 absolute right-8 top-32 left-8 lg:w-96 lg:left-auto lg:top-20"
 						style={{
 							zIndex: 1000,
 						}}
@@ -49,7 +49,7 @@ export const Cart = ({ cart, deleteProduct }) => {
 						<h2 className="border-b border-slate-400 font-bold pb-2 ">Cart</h2>
 
 						{cart.lenght === 0 ? (
-							<div className="flex items-center space-y-4 flex-col">
+							<div className=" flex items-center space-y-4 flex-col">
 								<h3 className="text-gray-500 text-lg font-semibold">
 									Oops... Seems your cart is empty
 								</h3>
@@ -58,11 +58,11 @@ export const Cart = ({ cart, deleteProduct }) => {
 								</button>
 							</div>
 						) : (
-							cart.map((item) => (
-								<div className="flex items-center justify-between mr-4 py-4 border-b-[2px] last:border-none">
+							cart.map((item, index) => (
+								<div key={index} className=" flex items-center justify-between mr-4 py-4 border-b-[2px] last:border-none">
 									<Image
 										src={item.imageProduit}
-										alt=""
+										alt="image product cart"
 										width={800}
 										height={600}
 										className="rounded-lg w-14 imageGlobal"
