@@ -11,7 +11,7 @@ export const Cart = ({ cart, deleteProduct }) => {
 	
 	const objetcTE = {}
 	cart.forEach((item) => (objetcTE[item.id] = item.quantity))
-	console.log(objetcTE)
+	
 	const [state, setState] = useState(objetcTE)
 	const handleSelectChange = (value, id) => {
 		const idFinded = cart.find((element) => element.id === id)
@@ -79,7 +79,7 @@ export const Cart = ({ cart, deleteProduct }) => {
 										</li>
 										<li className="text-slate-600 text-sm mt-2 ">
 											<div className="flex items-center gap-1 mb-2">
-												<p className="m-0">Quantity: {item.quantity}</p>
+												
 
 												<Select
 													defaultValue={{

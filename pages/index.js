@@ -13,8 +13,8 @@ export default function Index({cart, deleteProduct, updateQuantity}) {
 				deleteProduct={deleteProduct}
 				updateQuantity={updateQuantity}
 			>
-				<Home></Home>
 			</Layout>
+				<Home></Home>
 		</>
 	)
 

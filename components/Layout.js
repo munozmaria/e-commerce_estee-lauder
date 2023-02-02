@@ -14,7 +14,7 @@ export default function Layout({ children, cart, deleteProduct}) {
 					/>
 				</Head>
 
-				<Header cart={cart} deleteProduct={deleteProduct}></Header>
+				<Header cart={cart} deleteProduct={deleteProduct} ></Header>
 				{children}
 			</div>
 		)

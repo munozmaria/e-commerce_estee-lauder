@@ -6,8 +6,12 @@ import Lightbox from "../../components/Lightbox"
 
 
 
-const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQuantity }) => {
-	//console.log(shoppingApi.data[0].id)
+const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQuantity, thumbs }) => {
+	console.log(
+		thumbs.data[0].attributes.image.data
+	)
+	
+	//console.log(shoppingApi.data[0])
 	const {
 		brand,
 
@@ -21,11 +25,16 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 
 	const { id } = shoppingApi.data[0]
 
-	const imageProduit = image.data[0].attributes.url
+	const [imageProduit, setImageProduit] = useState(image.data[0].attributes.url)
+
+	
 	const [quantity, setQuantity] = useState(1)
-	const [slideIndex, setSlideIndex] = useState(1)
+	
 	const [value, setValue] = useState(0)
 	const [showLightbox, setShowLightbox] = useState(false)
+
+	
+
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		if (quantity < 1) {
@@ -43,38 +52,23 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 		addToCart(productAdded)
 	}
 
-		const nextSlide = () => {
-			if (slideIndex !== shoppingApi.length) {
-				setSlideIndex(slideIndex + 1)
-			} else if (slideIndex === shoppingApi.length) {
-				setSlideIndex(1)
-			}
-		}
-		const previousSlide = () => {
-			if (slideIndex !== 1) {
-				setSlideIndex(slideIndex - 1)
-			} else if (slideIndex === 1) {
-				setSlideIndex(shoppingApi.length)
-			}
-		}
+		
 
 	return (
-		<Layout
-			cart={cart}
-			deleteProduct={deleteProduct}
-			updateQuantity={updateQuantity}
-		>
+		<>
+			<Layout
+				cart={cart}
+				deleteProduct={deleteProduct}
+				updateQuantity={updateQuantity}
+			></Layout>
 			{showLightbox && (
 				<Lightbox
 					className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50"
-					products={shoppingApi}
-					slideIndex={slideIndex}
-					nextSlide={nextSlide}
-					previousSlide={previousSlide}
+					products={thumbs}
 					setShowLightbox={setShowLightbox}
 				/>
 			)}
-			<article className="lg:px-8 pb-10 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none max-w-7xl m-8">
+			<article className="lg:px-8 pb-10 py-40 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none max-w-7xl">
 				<div>
 					<Image
 						width={700}
@@ -83,29 +77,37 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 						priority="true"
 						alt={`image produit ${description}`}
 						src={imageProduit}
-						onClick={() => setShowLightbox(true)}
+						onClick={() => {
+							setShowLightbox(true)
+						}}
 					></Image>
+
 					<ul className="hidden lg:flex items-center p-8 justify-start gap-5 flex-wrap max-w-6xl mx-auto mt-5">
-						{shoppingApi.data.map((item, index) => (
-							<li
-								key={id}
-								onClick={() => setValue(index)}
-								className={`${
-									index === value && "border-2 border-orange-300 opacity-80"
-								} border-2 rounded-2xl overflow-hidden cursor-pointer`}
-							>
-								<Image
-									src={item.attributes.image.data[0].attributes.url}
-									className="w-20 imageGlobal"
-									width={800}
-									height={600}
-									priority="true"
-								></Image>
-							</li>
-						))}
+						{thumbs.data.map((item, index) =>
+							item.attributes.image.data.map((image, index) => (
+								<li
+									key={id}
+									onClick={() => {
+										setValue(index)
+										setImageProduit(image.attributes.url)
+									}}
+									className={`${
+										index === value && "border-2 border-orange-300 opacity-80"
+									} border-2 rounded-2xl overflow-hidden cursor-pointer`}
+								>
+									<Image
+										src={image.attributes.url}
+										className="w-20 imageGlobal"
+										width={800}
+										height={600}
+										priority="true"
+									></Image>
+								</li>
+							))
+						)}
 					</ul>
 				</div>
-				<div>
+				<div className="p-8">
 					<h2 className="bg-slate-100 py-1 px-2 text-orange-600 uppercase tracking-wide text-sm font-bold inline-block rounded shadow mb-10">
 						{brand}
 					</h2>
@@ -150,7 +152,7 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 					</form>
 				</div>
 			</article>
-		</Layout>
+		</>
 	)
 }
 
@@ -159,6 +161,8 @@ export async function getStaticPaths() {
 	const url = `${process.env.API_URL}/makeups?populate=*`
 	const response = await fetch(url)
 	const responseApi = await response.json()
+
+	
 	const paths = responseApi.data.map((rsp) => (
 		{
 		
@@ -172,16 +176,23 @@ export async function getStaticPaths() {
 }
 
 
+
+
 export async function getStaticProps({ params: { slug } }) {
 	const urlMakeup = `${process.env.API_URL}/makeups?filters[slug][$eq]=${slug}&populate=*`
-	const response = await fetch(urlMakeup)
-	const shoppingApi = await response.json()
+	const urlThumbs = `${process.env.API_URL}/products?populate=*`
+
+const [resMakeup, resThumbs] = await Promise.all([fetch(urlMakeup), fetch(urlThumbs)])
+const [shoppingApi, thumbs] = await Promise.all([resMakeup.json(), resThumbs.json()])
+
+
 	
 
 	return {
 		props: {
 			shoppingApi,
-			slug
+			slug,
+			thumbs
 		},
 		
 	}

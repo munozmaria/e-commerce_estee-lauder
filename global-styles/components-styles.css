@@ -78,11 +78,11 @@ nav ul li {
     width: auto;
     height: auto;
     z-index: auto;
-     background-color: transparent;
+     background-color: white;
   }
 
   nav.open {
-    background-color: transparent;
+    background-color: white;
   
   }
 

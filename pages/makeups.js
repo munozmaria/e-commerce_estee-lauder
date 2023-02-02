@@ -9,19 +9,20 @@ const Makeups = ({ productsApi, cart, deleteProduct, updateQuantity }) => {
 	const productsApiArray = productsApi.data
 
 	return (
-		<Layout
-			cart={cart}
-			deleteProduct={deleteProduct}
-			updateQuantity={updateQuantity}
-		>
-			<main className="">
+		<>
+			<Layout
+				cart={cart}
+				deleteProduct={deleteProduct}
+				updateQuantity={updateQuantity}
+			></Layout>
+			<main className="py-40">
 				<div>
 					{productsApiArray.map((item) => (
 						<Products key={item.id} item={item} />
 					))}
 				</div>
 			</main>
-		</Layout>
+		</>
 	)
 }
 

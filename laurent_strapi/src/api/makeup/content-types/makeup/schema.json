@@ -37,13 +37,24 @@
       "targetField": "description"
     },
     "price": {
-      "type": "decimal"
+      "type": "integer"
     },
     "discount": {
       "type": "integer"
     },
     "final_price": {
-      "type": "decimal"
+      "type": "integer"
+    },
+    "thumbs": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

@@ -31,6 +31,8 @@ export default function App({ Component, pageProps }) {
 		
 	}
 
+
+
 	//quantity cart
 	const updateQuantity = product => {
 		const cartWithProduct = cart.map((makeup) => {
@@ -64,7 +66,7 @@ export default function App({ Component, pageProps }) {
 				addToCart={addToCart}
 				updateQuantity={updateQuantity}
 				deleteProduct={deleteProduct}
-				
+			
 			></Component>
 		</>
 	)
