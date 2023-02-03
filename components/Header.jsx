@@ -11,7 +11,7 @@ import { Cart } from "./Cart"
 export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [cartIsOpen, setCartIsOpen] = useState(false)
-
+	const [pageIsCart, setPageIsCart] = useState(false)
 	const wrapperRef = useRef(null)
 	const buttonRef = useRef(null)
 	useOutsideAlerter(wrapperRef, buttonRef)
@@ -19,7 +19,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 
 	function useOutsideAlerter(ref, ref2) {
 		useEffect(() => {
-			
+			setPageIsCart(location.pathname === "/cart")
 			function handleClickOutside(event) {
 				
 				if (
@@ -85,35 +85,37 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 						</nav>
 					</div>
 					<div>
-						<ul className="flex items-center justify-start gap-4">
-							<Link href="/cart">
-								<button>
-									<AiOutlineShoppingCart className="text-2xl text-slate-600" />
-								</button>
-							</Link>
+						{!pageIsCart ? (
+							<ul className="flex items-center justify-start gap-4">
+								<Link href="/cart">
+									<button>
+										<AiOutlineShoppingCart className="text-2xl text-slate-600" />
+									</button>
+								</Link>
 
-							<li>
-								<button
-									ref={buttonRef}
-									onClick={() => {
-										setCartIsOpen(!cartIsOpen)
-										setIsOpen(false)
-									}}
-								>
-									<BsFillPersonFill className="text-2xl  text-slate-600" />
-								</button>
-							</li>
-							<span  ref={wrapperRef}>
-								{cartIsOpen && (
-									<Cart
-										cart={cart}
-										deleteProduct={deleteProduct}
-										updateQuantity={updateQuantity}
-										className="overflow-auto md:overflow-scroll"
-									></Cart>
-								)}
-							</span>
-						</ul>
+								<li>
+									<button
+										ref={buttonRef}
+										onClick={() => {
+											setCartIsOpen(!cartIsOpen)
+											setIsOpen(false)
+										}}
+									>
+										<BsFillPersonFill className="text-2xl  text-slate-600" />
+									</button>
+								</li>
+								<span ref={wrapperRef}>
+									{cartIsOpen && location.pathname !== "/cart" && (
+										<Cart
+											cart={cart}
+											deleteProduct={deleteProduct}
+											updateQuantity={updateQuantity}
+											className="overflow-auto md:overflow-scroll"
+										></Cart>
+									)}
+								</span>
+							</ul>
+						) : ""}
 					</div>
 				</div>
 			</header>

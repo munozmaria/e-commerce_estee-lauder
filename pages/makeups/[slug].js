@@ -68,7 +68,7 @@ const entrandoShopping = ({
 					setShowLightbox={setShowLightbox}
 				/>
 			)}
-			<article className="lg:px-8 pb-10 py-40 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none max-w-7xl">
+			<article className="lg:px-8 pb-10 py-40 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none mx-auto max-w-6xl">
 				<div>
 					<Image
 						width={700}

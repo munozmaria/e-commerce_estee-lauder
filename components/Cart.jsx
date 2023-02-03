@@ -34,8 +34,6 @@ export const Cart = ({ cart, deleteProduct }) => {
 
 	
 	
-	
-
 	return (
 		<>
 			<div>
@@ -46,7 +44,13 @@ export const Cart = ({ cart, deleteProduct }) => {
 							zIndex: 1000,
 						}}
 					>
-						<h2 className="border-b border-slate-400 font-bold pb-2 ">Cart</h2>
+						<div className="mb-8">
+							<Link href="/cart">
+								<button className="bg-pink-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full hover:bg-pink-600 transition-all duration-200">
+									Checkout
+								</button>
+							</Link>
+						</div>
 
 						{cart.lenght === 0 ? (
 							<div className=" flex items-center space-y-4 flex-col">
@@ -59,7 +63,10 @@ export const Cart = ({ cart, deleteProduct }) => {
 							</div>
 						) : (
 							cart.map((item, index) => (
-								<div key={index} className=" flex items-center justify-between mr-4 py-4 border-b-[2px] last:border-none">
+								<div
+									key={index}
+									className=" flex items-center justify-between mr-4 py-4 border-b-[2px] last:border-none"
+								>
 									<Image
 										src={item.imageProduit}
 										alt="image product cart"
@@ -99,16 +106,6 @@ export const Cart = ({ cart, deleteProduct }) => {
 								</div>
 							))
 						)}
-
-						<div>
-							{location.pathname !== "/cart" && (
-								<Link href="/cart">
-									<button className="bg-orange-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full hover:bg-orange-600 transition-all duration-200">
-										Checkout
-									</button>
-								</Link>
-							)}
-						</div>
 					</article>
 				</div>
 			</div>

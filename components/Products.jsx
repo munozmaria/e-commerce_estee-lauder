@@ -21,10 +21,10 @@ export const Products = ({ item }) => {
 	const imageProduit = image.data[0].attributes.url
 
 	return (
-		<article className="lg:px-8 pb-10 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none">
+		<article className="lg:px-8 pb-10 grid lg:grid-cols-2 gap-10 place-items-center grid-cols-none max-w-6xl mx-auto">
 			<Image
 				priority="true"
-				className="object-contain h-70"
+				className="object-contain h-70 w-96"
 				width={800}
 				height={600}
 				src={imageProduit}
