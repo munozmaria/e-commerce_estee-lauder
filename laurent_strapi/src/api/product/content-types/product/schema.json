@@ -25,6 +25,10 @@
     },
     "description": {
       "type": "string"
+    },
+    "slug2": {
+      "type": "uid",
+      "targetField": "description"
     }
   }
 }

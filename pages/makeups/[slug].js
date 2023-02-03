@@ -6,11 +6,16 @@ import Lightbox from "../../components/Lightbox"
 
 
 
-const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQuantity, thumbs }) => {
-	console.log(
-		thumbs.data[0].attributes.image.data
-	)
-	
+const entrandoShopping = ({
+	shoppingApi,
+	addToCart,
+	cart,
+	deleteProduct,
+	updateQuantity,
+	productsSlug,
+}) => {
+	console.log(productsSlug)
+
 	//console.log(shoppingApi.data[0])
 	const {
 		brand,
@@ -27,13 +32,10 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 
 	const [imageProduit, setImageProduit] = useState(image.data[0].attributes.url)
 
-	
 	const [quantity, setQuantity] = useState(1)
-	
+
 	const [value, setValue] = useState(0)
 	const [showLightbox, setShowLightbox] = useState(false)
-
-	
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -52,8 +54,6 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 		addToCart(productAdded)
 	}
 
-		
-
 	return (
 		<>
 			<Layout
@@ -64,7 +64,7 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 			{showLightbox && (
 				<Lightbox
 					className="bg-black bg-opacity-75 fixed top-0 left-0 right-0 bottom-0 z-50"
-					products={thumbs}
+					products={productsSlug}
 					setShowLightbox={setShowLightbox}
 				/>
 			)}
@@ -72,7 +72,7 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 				<div>
 					<Image
 						width={700}
-						className="object-contain h-70 96"
+						className="object-contain h-70 w-96 cursor-zoom-in "
 						height={600}
 						priority="true"
 						alt={`image produit ${description}`}
@@ -83,7 +83,7 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 					></Image>
 
 					<ul className="hidden lg:flex items-center p-8 justify-start gap-5 flex-wrap max-w-6xl mx-auto mt-5">
-						{thumbs.data.map((item, index) =>
+						{productsSlug.data.map((item, index) =>
 							item.attributes.image.data.map((image, index) => (
 								<li
 									key={image.id}
@@ -160,6 +160,7 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 
 export async function getStaticPaths() {
 	const url = `${process.env.API_URL}/makeups?populate=*`
+	
 	const response = await fetch(url)
 	const responseApi = await response.json()
 
@@ -181,10 +182,12 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
 	const urlMakeup = `${process.env.API_URL}/makeups?filters[slug][$eq]=${slug}&populate=*`
-	const urlThumbs = `${process.env.API_URL}/products?populate=*`
+	
+	const urlThumbsProducts = `${process.env.API_URL}/products?filters[slug2][$eq]=${slug}&populate=*`
+	
 
-const [resMakeup, resThumbs] = await Promise.all([fetch(urlMakeup), fetch(urlThumbs)])
-const [shoppingApi, thumbs] = await Promise.all([resMakeup.json(), resThumbs.json()])
+const [resMakeup, resThumbsProducts] = await Promise.all([fetch(urlMakeup),  fetch(urlThumbsProducts)])
+const [shoppingApi, productsSlug] = await Promise.all([resMakeup.json(), resThumbsProducts.json()])
 
 
 	
@@ -193,7 +196,7 @@ const [shoppingApi, thumbs] = await Promise.all([resMakeup.json(), resThumbs.jso
 		props: {
 			shoppingApi,
 			slug,
-			thumbs
+			productsSlug
 		},
 		
 	}
