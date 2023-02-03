@@ -6,7 +6,6 @@ import { useState } from "react"
 
 export default function Lightbox({
 	products,
-
 	setShowLightbox,
 }) {
 	const { image } = products.data[0].attributes
@@ -44,12 +43,12 @@ export default function Lightbox({
 								src={image.data[current].attributes.url}
 								width={800}
 								height={600}
-								alt="image lightbox"
+								alt="image lightbox "
 								className={
 									index === current
-										? "relative big-image  lg:mt-3 lg:mb-5 lg:rounded-2xl imageGlobal "
+										? "relative big-image  lg:mt-3 lg:mb-5 lg:rounded-2xl imageGlobal object-contain "
 										: "hidden" &&
-										  " big-image  lg:rounded-2xl lg:mt-3 lg:mb-5 imageGlobal"
+										  " big-image  lg:rounded-2xl lg:mt-3 lg:mb-5 imageGlobal object-contain"
 								}
 								priority="true"
 							/>

@@ -72,7 +72,7 @@ const entrandoShopping = ({ shoppingApi, addToCart, cart, deleteProduct, updateQ
 				<div>
 					<Image
 						width={700}
-						className="object-contain h-70 w-96"
+						className="object-contain h-70 96"
 						height={600}
 						priority="true"
 						alt={`image produit ${description}`}
