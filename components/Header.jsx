@@ -39,7 +39,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 			
 				document.removeEventListener("mousedown", handleClickOutside)
 			}
-		}, [ref, cartIsOpen])
+		}, [ref, ref2, cartIsOpen])
 	}
 
 	return (
