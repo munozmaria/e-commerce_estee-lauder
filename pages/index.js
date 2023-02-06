@@ -18,7 +18,7 @@ export default function Index({cart, deleteProduct, updateQuantity}) {
 				updateQuantity={updateQuantity}
 			></Layout>
 			<div className="pt-10">
-				<section className="py-40 w-full bg-[url('../images/estelauderModel.jpg')] bg-no-repeat bg-cover bg-center">
+				<section className="py-40 min-h-screen bg-[url('../images/estelauderModel.jpg')] bg-no-repeat bg-cover bg-center">
 					<div className="flex items-center rounded bg-white bg-opacity-50 font-serif mx-4 p-4 md:p-4 md:px-6 ">
 						<article className="px-8 pb-2">
 							<h3 className="text-5xl  pb-2">Your Gift,</h3>
