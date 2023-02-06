@@ -2,7 +2,7 @@ import { useState } from "react"
 import Layout from "../../components/Layout"
 import Image from "next/image"
 import Lightbox from "../../components/Lightbox"
-import Confetti from "../../components/Confetti"
+
 
 const entrandoShopping = ({
 	shoppingApi,
@@ -12,9 +12,9 @@ const entrandoShopping = ({
 	updateQuantity,
 	productsSlug,
 }) => {
-	console.log(productsSlug)
+	
 
-	//console.log(shoppingApi.data[0])
+	
 	const {
 		brand,
 
@@ -56,7 +56,7 @@ const entrandoShopping = ({
 
 	return (
 		<>
-			<Confetti run={Btn}></Confetti>
+		
 
 			<Layout
 				cart={cart}

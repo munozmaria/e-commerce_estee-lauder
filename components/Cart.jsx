@@ -2,7 +2,7 @@
 import { AiFillDelete } from "react-icons/ai"
 import Image from "next/image"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Select from "react-select"
 
 

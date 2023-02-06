@@ -17,7 +17,7 @@ export const Products = ({ item }) => {
 	} = item.attributes
 	const { slug } = item.attributes
 
-	//console.log(image.data[0].attributes.url)
+
 	const imageProduit = image.data[0].attributes.url
 
 	return (
