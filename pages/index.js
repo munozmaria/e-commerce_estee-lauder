@@ -36,7 +36,7 @@ export default function Index({cart, deleteProduct, updateQuantity}) {
 					</div>
 				</section>
 				<section className="p-20 py-30 pb-10 max-w-6xl mx-auto gap-8 place-items-center">
-					<h1 className="bg-pink-50 p-4 mb-10  font-bold text-3xl -translate-y-2/4 mix-blend-screen lg:text-5xl text-center text-gray-700">
+					<h1 className="bg-pink-50 p-4 mb-10  font-bold text-3xl  lg:text-5xl text-center text-gray-700">
 						#EsteeLauder
 					</h1>
 					<div className="grid  items-center gap-8 md:grid-cols-2">
