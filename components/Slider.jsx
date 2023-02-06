@@ -21,7 +21,7 @@ const Slider = props => {
 			>
 				{props.images.data.map((index, item) => (
 					<SwiperSlide key={index}>
-						<img src={item}></img>
+						<img src={item} alt="slider lightbox"></img>
 					</SwiperSlide>
 				))}
 			</Swiper>

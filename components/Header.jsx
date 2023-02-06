@@ -19,7 +19,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 
 	function useOutsideAlerter(ref, ref2) {
 		useEffect(() => {
-			setPageIsCart(location.pathname === "/cart")
+			setPageIsCart(window.location.pathname === "/cart")
 			function handleClickOutside(event) {
 				
 				if (
@@ -105,7 +105,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 									</button>
 								</li>
 								<span ref={wrapperRef}>
-									{cartIsOpen && location.pathname !== "/cart" && (
+									{cartIsOpen && window.location.pathname !== "/cart" && (
 										<Cart
 											cart={cart}
 											deleteProduct={deleteProduct}

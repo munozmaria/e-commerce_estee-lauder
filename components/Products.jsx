@@ -13,7 +13,6 @@ export const Products = ({ item }) => {
 		price,
 		discount,
 		final_price,
-		id,
 	} = item.attributes
 	const { slug } = item.attributes
 

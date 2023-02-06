@@ -4,7 +4,7 @@ import Image from "next/image"
 import Lightbox from "../../components/Lightbox"
 
 
-const entrandoShopping = ({
+const GettingProducts = ({
 	shoppingApi,
 	addToCart,
 	cart,
@@ -35,7 +35,7 @@ const entrandoShopping = ({
 	const [value, setValue] = useState(0)
 	const [showLightbox, setShowLightbox] = useState(false)
 
-	const [Btn, setBtn] = useState(false)
+	
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -148,7 +148,7 @@ const entrandoShopping = ({
 							<option value="5">5</option>
 						</select>
 						<input
-							onClick={() => setBtn(true)}
+						
 							className="flex items-center justify-center gap-4 bg-red-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-red-600 transition-all duration-200 cursor-pointer"
 							type="submit"
 							value="Add to bag"
@@ -199,4 +199,4 @@ export async function getStaticProps({ params: { slug } }) {
 	}
 }
 
-export default entrandoShopping
+export default GettingProducts

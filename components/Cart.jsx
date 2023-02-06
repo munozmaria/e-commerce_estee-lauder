@@ -12,7 +12,7 @@ export const Cart = ({ cart, deleteProduct }) => {
 	const objetcTE = {}
 	cart.forEach((item) => (objetcTE[item.id] = item.quantity))
 	
-	const [state, setState] = useState(objetcTE)
+	const [ setState] = useState(objetcTE)
 	const handleSelectChange = (value, id) => {
 		const idFinded = cart.find((element) => element.id === id)
 		idFinded.quantity = value
