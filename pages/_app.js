@@ -60,13 +60,13 @@ export default function App({ Component, pageProps }) {
 
 	return (
 		<>
+		
 			<Component
 				{...pageProps}
 				cart={cart}
 				addToCart={addToCart}
 				updateQuantity={updateQuantity}
 				deleteProduct={deleteProduct}
-			
 			></Component>
 		</>
 	)

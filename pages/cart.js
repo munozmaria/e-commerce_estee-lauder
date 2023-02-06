@@ -3,18 +3,18 @@ import Image from "next/image"
 import Layout from "../components/Layout"
 import Link from "next/link"
 
-
 const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 	console.log(cart)
 
-    const [total, setTotal] = useState(0)
-    useEffect(() => {
-        const getTotal = cart.reduce((total, item) => total + (item.quantity * item.final_price), 0)
-        setTotal(getTotal)
-	}, [cart]);
-	
-	
-   
+	const [total, setTotal] = useState(0)
+	useEffect(() => {
+		const getTotal = cart.reduce(
+			(total, item) => total + item.quantity * item.final_price,
+			0
+		)
+		setTotal(getTotal)
+	}, [cart])
+
 	//console.log(cart)
 	return (
 		<>
@@ -83,7 +83,7 @@ const CartPage = ({ cart, updateQuantity, deleteProduct }) => {
 										<button
 											type="button"
 											onClick={() => deleteProduct(item.id)}
-											className="rounded-lg px-2 mt-6 py-1 bg-red-600 text-red-100 hover:bg-red-700 hover:cursor-pointer duration-300 -top-4 -right-3 "
+											className="rounded-lg px-2 mt-6 py-1 bg-red-600 text-red-100 hover:bg-orange hover:cursor-pointer duration-300 -top-4 -right-3 "
 										>
 											Delete
 										</button>

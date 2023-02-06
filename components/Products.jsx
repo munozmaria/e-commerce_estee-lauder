@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image"
+import Link from "next/link"
+import React from "react"
 
 export const Products = ({ item }) => {
 	//console.log(item)
@@ -43,7 +43,7 @@ export const Products = ({ item }) => {
 						<li className="font-bold text-slate-900 text-2xl">
 							{final_price}€
 						</li>
-						<li className="bg-orange-100 py-1 px-2 text-orange-400 uppercase tracking-wide text-sm font-bold inline-block rounded shadow">
+						<li className="bg-red-100 py-1 px-2 text-red-400 uppercase tracking-wide text-sm font-bold inline-block rounded shadow">
 							{discount}%
 						</li>
 					</ul>
@@ -52,7 +52,7 @@ export const Products = ({ item }) => {
 					</p>
 				</div>
 				<Link
-					className="flex items-center justify-center gap-4 bg-orange-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-orange-600 transition-all duration-200"
+					className="flex items-center justify-center gap-4 bg-red-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-red-600 transition-all duration-200"
 					href={`/makeups/${slug}`}
 				>
 					Quick shop

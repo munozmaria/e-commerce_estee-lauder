@@ -4,16 +4,10 @@ import { BsChevronLeft } from "react-icons/bs"
 import Image from "next/image"
 import { useState } from "react"
 
-export default function Lightbox({
-	products,
-	setShowLightbox,
-}) {
+export default function Lightbox({ products, setShowLightbox }) {
 	const { image } = products.data[0].attributes
 
-	
-
 	const productsArray = products.data
-
 
 	const [current, setCurrent] = useState(0)
 	const length = image.data.length
@@ -27,10 +21,6 @@ export default function Lightbox({
 	function previousSlide() {
 		setCurrent(current === 0 ? length - 1 : current - 1)
 	}
-
-
-
-	
 
 	return (
 		<>
@@ -54,7 +44,7 @@ export default function Lightbox({
 							/>
 						))}
 						<button
-							className="bg-white rounded-full font-bold p-4  items-center shadow absolute top-3 right-4 text-orange-600"
+							className="bg-white rounded-full font-bold p-4  items-center shadow absolute top-3 right-4 text-red-600"
 							onClick={() => setShowLightbox(false)}
 						>
 							<GrClose />

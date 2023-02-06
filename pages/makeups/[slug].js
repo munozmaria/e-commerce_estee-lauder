@@ -2,9 +2,7 @@ import { useState } from "react"
 import Layout from "../../components/Layout"
 import Image from "next/image"
 import Lightbox from "../../components/Lightbox"
-
-
-
+import Confetti from "../../components/Confetti"
 
 const entrandoShopping = ({
 	shoppingApi,
@@ -37,6 +35,8 @@ const entrandoShopping = ({
 	const [value, setValue] = useState(0)
 	const [showLightbox, setShowLightbox] = useState(false)
 
+	const [Btn, setBtn] = useState(false)
+
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		if (quantity < 1) {
@@ -56,6 +56,8 @@ const entrandoShopping = ({
 
 	return (
 		<>
+			<Confetti run={Btn}></Confetti>
+
 			<Layout
 				cart={cart}
 				deleteProduct={deleteProduct}
@@ -123,7 +125,7 @@ const entrandoShopping = ({
 							<li className="font-bold text-slate-900 text-2xl">
 								{final_price}€
 							</li>
-							<li className="bg-orange-100 py-1 px-2 text-orange-400 uppercase tracking-wide text-sm font-bold inline-block rounded shadow">
+							<li className="bg-red-100 py-1 px-2 text-red-400 uppercase tracking-wide text-sm font-bold inline-block rounded shadow">
 								{discount}%
 							</li>
 						</ul>
@@ -136,7 +138,7 @@ const entrandoShopping = ({
 						<select
 							value={quantity}
 							onChange={(e) => setQuantity(parseInt(e.target.value))}
-							className="py-1 my-2 border-solid border-2 border-orange-600 flex-1  text-center rounded"
+							className="py-1 my-2 border-solid border-2 border-red-600 flex-1  text-center rounded"
 						>
 							<option value="0">--Choose--</option>
 							<option value="1">1</option>
@@ -146,7 +148,8 @@ const entrandoShopping = ({
 							<option value="5">5</option>
 						</select>
 						<input
-							className="flex items-center justify-center gap-4 bg-orange-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-orange-600 transition-all duration-200 cursor-pointer"
+							onClick={() => setBtn(true)}
+							className="flex items-center justify-center gap-4 bg-red-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-red-600 transition-all duration-200 cursor-pointer"
 							type="submit"
 							value="Add to bag"
 						></input>
@@ -157,17 +160,13 @@ const entrandoShopping = ({
 	)
 }
 
-
 export async function getStaticPaths() {
 	const url = `${process.env.API_URL}/makeups?populate=*`
-	
+
 	const response = await fetch(url)
 	const responseApi = await response.json()
 
-	
-	const paths = responseApi.data.map((rsp) => (
-		{
-		
+	const paths = responseApi.data.map((rsp) => ({
 		params: { slug: rsp.attributes.slug },
 	}))
 
@@ -177,32 +176,27 @@ export async function getStaticPaths() {
 	}
 }
 
-
-
-
 export async function getStaticProps({ params: { slug } }) {
 	const urlMakeup = `${process.env.API_URL}/makeups?filters[slug][$eq]=${slug}&populate=*`
-	
+
 	const urlThumbsProducts = `${process.env.API_URL}/products?filters[slug2][$eq]=${slug}&populate=*`
-	
 
-const [resMakeup, resThumbsProducts] = await Promise.all([fetch(urlMakeup),  fetch(urlThumbsProducts)])
-const [shoppingApi, productsSlug] = await Promise.all([resMakeup.json(), resThumbsProducts.json()])
-
-
-	
+	const [resMakeup, resThumbsProducts] = await Promise.all([
+		fetch(urlMakeup),
+		fetch(urlThumbsProducts),
+	])
+	const [shoppingApi, productsSlug] = await Promise.all([
+		resMakeup.json(),
+		resThumbsProducts.json(),
+	])
 
 	return {
 		props: {
 			shoppingApi,
 			slug,
-			productsSlug
+			productsSlug,
 		},
-		
 	}
 }
-
-
-
 
 export default entrandoShopping

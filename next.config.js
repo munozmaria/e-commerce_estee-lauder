@@ -1,6 +1,15 @@
-module.exports = {
-    modules: true,
-    images: {
-        domains: ["res.cloudinary.com"],
-    },
+
+const withVideos = require("next-videos")
+
+module.exports = withVideos({
+
+	
+	images: {
+		domains: ["res.cloudinary.com"],
+		
+	},
+
 }
+)
+
+

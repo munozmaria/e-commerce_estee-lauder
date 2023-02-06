@@ -46,7 +46,7 @@ export const Cart = ({ cart, deleteProduct }) => {
 					>
 						<div className="mb-8">
 							<Link href="/cart">
-								<button className="bg-pink-500 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full hover:bg-pink-600 transition-all duration-200">
+								<button className="bg-red-400 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full hover:bg-red-600 transition-all duration-200">
 									Checkout
 								</button>
 							</Link>
