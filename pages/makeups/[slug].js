@@ -152,7 +152,7 @@ const GettingProducts = ({
 }
 
 export async function getStaticPaths() {
-	const url = `${process.env.API_URL}/makeups?populate=*`
+	const url = `http://localhost:1337/api/makeups?populate=*`
 
 	const response = await fetch(url)
 	const responseApi = await response.json()
@@ -168,9 +168,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-	const urlMakeup = `${process.env.API_URL}/makeups?filters[slug][$eq]=${slug}&populate=*`
+	const urlMakeup = `http://localhost:1337/api/makeups?filters[slug][$eq]=${slug}&populate=*`
 
-	const urlThumbsProducts = `${process.env.API_URL}/products?filters[slug2][$eq]=${slug}&populate=*`
+	const urlThumbsProducts = `http://localhost:1337/api/products?filters[slug2][$eq]=${slug}&populate=*`
 
 	const [resMakeup, resThumbsProducts] = await Promise.all([
 		fetch(urlMakeup),

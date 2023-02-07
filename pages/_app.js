@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }) {
 		
 	}
 
-
+	
 
 	//quantity cart
 	const updateQuantity = product => {

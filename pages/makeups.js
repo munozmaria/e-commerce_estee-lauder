@@ -25,7 +25,7 @@ const Makeups = ({ productsApi, cart, deleteProduct, updateQuantity }) => {
 }
 
 export async function getStaticProps() {
-	const url = `${process.env.API_URL}/makeups?populate=*`
+	const url = `http://localhost:1337/api/makeups?populate=*`
 	const response = await fetch(url)
 	const productsApi = await response.json()
 
