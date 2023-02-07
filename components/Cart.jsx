@@ -31,14 +31,14 @@ export const Cart = ({ cart, deleteProduct }) => {
 			<div>
 				<div>
 					<article
-						className="bg-white overflow-y-auto h-80 rounded-2xl shadow-2xl p-8 absolute right-8 top-32 left-8 lg:w-96 lg:left-auto lg:top-20"
+						className="bg-white overflow-y-auto h-96 rounded-2xl shadow-2xl p-8 absolute right-8 top-32 left-8 lg:w-96 lg:h-96 lg:left-auto lg:top-20"
 						style={{
 							zIndex: 1000,
 						}}
 					>
 						<div className="mb-8">
 							<Link href="/cart">
-								<button className="bg-red-400 py-2 px-4 text-white font-bold rounded-lg shadow mt-5 w-full hover:bg-red-600 transition-all duration-200">
+								<button className="bg-pink-50 py-2 px-4 text-gray-700 font-bold rounded-lg shadow mt-5 w-full hover:bg-red-400 transition-all duration-200">
 									Checkout
 								</button>
 							</Link>

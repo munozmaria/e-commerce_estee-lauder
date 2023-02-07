@@ -9,9 +9,10 @@ export default function Index({ cart, deleteProduct, updateQuantity }) {
 				deleteProduct={deleteProduct}
 				updateQuantity={updateQuantity}
 			></Layout>
-			<div className="pt-10">
-				<section className="py-40 min-h-screen bg-[url('../images/estelauderModel.jpg')] bg-no-repeat bg-cover bg-center">
-					<div className="flex items-center rounded bg-white bg-opacity-50 font-serif mx-4 p-4 md:p-4 md:px-6 ">
+
+			<div className="pt-20">
+				<section className="py-40  min-h-screen bg-[url('../images/estelauderModel.jpg')] bg-no-repeat bg-cover bg-center">
+					<div className="flex items-center rounded max-w-6xl mx-auto bg-white bg-opacity-50 font-serif  p-4 md:p-4 md:px-6 ">
 						<article className="px-8 pb-2">
 							<h3 className="text-5xl  pb-2">Your Gift,</h3>
 							<h3 className="text-5xl  pb-8">Your Choice,</h3>
@@ -27,7 +28,8 @@ export default function Index({ cart, deleteProduct, updateQuantity }) {
 						</article>
 					</div>
 				</section>
-				<section className="p-20 py-30 pb-10 max-w-6xl mx-auto gap-8 place-items-center">
+
+				<section className="lg:p-20 min-h-screen pt-40  max-w-6xl mx-auto gap-8 place-items-center lg:pt-40">
 					<h1 className="bg-pink-50 p-4 mb-10  font-bold text-3xl  lg:text-5xl text-center text-gray-700">
 						#EsteeLauder
 					</h1>
@@ -42,7 +44,7 @@ export default function Index({ cart, deleteProduct, updateQuantity }) {
 								loop
 								width={"1300px"}
 								height={"800px"}
-								className="rounded border-2 shadow-lg shadow-gray-500/50 object-cover"
+								className="rounded border-2 shadow-lg shadow-pink-20 0/50 object-cover"
 							>
 								<source
 									src={require("../assets/esteelauder.mp4")}

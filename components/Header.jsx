@@ -41,7 +41,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 	return (
 		<>
 			<header className=" fixed w-full bg-white shadow-lg shadow-gray-500/50">
-				<div className="este-lauder-image relative flex items-center justify-between px-8 py-2 border-b border-slate-400 max-w-6xl mx-auto ">
+				<div className="este-lauder-image relative flex items-center justify-between px-8 py-2 max-w-6xl mx-auto ">
 					<div className="flex items-center justify-start gap-4  ">
 						<ul className="flex items-center justify-start gap-4 ">
 							{!isOpen && (
