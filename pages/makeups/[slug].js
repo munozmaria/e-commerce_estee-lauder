@@ -3,7 +3,6 @@ import Layout from "../../components/Layout"
 import Image from "next/image"
 import Lightbox from "../../components/Lightbox"
 
-
 const GettingProducts = ({
 	shoppingApi,
 	addToCart,
@@ -12,9 +11,6 @@ const GettingProducts = ({
 	updateQuantity,
 	productsSlug,
 }) => {
-	
-
-	
 	const {
 		brand,
 
@@ -35,8 +31,6 @@ const GettingProducts = ({
 	const [value, setValue] = useState(0)
 	const [showLightbox, setShowLightbox] = useState(false)
 
-	
-
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		if (quantity < 1) {
@@ -56,8 +50,6 @@ const GettingProducts = ({
 
 	return (
 		<>
-		
-
 			<Layout
 				cart={cart}
 				deleteProduct={deleteProduct}
@@ -148,7 +140,6 @@ const GettingProducts = ({
 							<option value="5">5</option>
 						</select>
 						<input
-						
 							className="flex items-center justify-center gap-4 bg-red-400 py-2 px-2 text-white font-bold rounded-lg shadow mt-4 w-full lg:mt-0 hover:bg-red-600 transition-all duration-200 cursor-pointer"
 							type="submit"
 							value="Add to bag"

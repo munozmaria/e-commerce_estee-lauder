@@ -1,15 +1,7 @@
+import Link from "next/link"
+import Layout from "../components/Layout"
 
-import Link from "next/link";
-import Layout from "../components/Layout";
-
-
-
-
-
-
-
-export default function Index({cart, deleteProduct, updateQuantity}) {
-
+export default function Index({ cart, deleteProduct, updateQuantity }) {
 	return (
 		<>
 			<Layout
@@ -71,6 +63,4 @@ export default function Index({cart, deleteProduct, updateQuantity}) {
 			</div>
 		</>
 	)
-
-
 }

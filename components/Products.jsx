@@ -5,17 +5,9 @@ import React from "react"
 export const Products = ({ item }) => {
 	//console.log(item)
 
-	const {
-		brand,
-		content,
-		description,
-		image,
-		price,
-		discount,
-		final_price,
-	} = item.attributes
+	const { brand, content, description, image, price, discount, final_price } =
+		item.attributes
 	const { slug } = item.attributes
-
 
 	const imageProduit = image.data[0].attributes.url
 

@@ -1,18 +1,14 @@
-
 import { AiFillDelete } from "react-icons/ai"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import Select from "react-select"
 
-
-
 export const Cart = ({ cart, deleteProduct }) => {
-	
 	const objetcTE = {}
 	cart.forEach((item) => (objetcTE[item.id] = item.quantity))
-	
-	const [ setState] = useState(objetcTE)
+
+	const [setState] = useState(objetcTE)
 	const handleSelectChange = (value, id) => {
 		const idFinded = cart.find((element) => element.id === id)
 		idFinded.quantity = value
@@ -22,8 +18,6 @@ export const Cart = ({ cart, deleteProduct }) => {
 			[id]: value,
 		}))
 	}
-	
-		
 
 	const suppliers = [
 		{ label: "1", value: 1 },
@@ -32,8 +26,6 @@ export const Cart = ({ cart, deleteProduct }) => {
 		{ label: "4", value: 4 },
 	]
 
-	
-	
 	return (
 		<>
 			<div>

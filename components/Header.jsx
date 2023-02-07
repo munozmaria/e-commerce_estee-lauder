@@ -16,12 +16,10 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 	const buttonRef = useRef(null)
 	useOutsideAlerter(wrapperRef, buttonRef)
 
-
 	function useOutsideAlerter(ref, ref2) {
 		useEffect(() => {
 			setPageIsCart(window.location.pathname === "/cart")
 			function handleClickOutside(event) {
-				
 				if (
 					cartIsOpen &&
 					ref.current &&
@@ -30,13 +28,11 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 				) {
 					setCartIsOpen(false)
 					setIsOpen(false)
-					
 				}
 			}
-		
+
 			document.addEventListener("mousedown", handleClickOutside)
 			return () => {
-			
 				document.removeEventListener("mousedown", handleClickOutside)
 			}
 		}, [ref, ref2, cartIsOpen])
@@ -77,7 +73,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 
 						<nav className={isOpen && "open"}>
 							<ul className="font-bold">
-								<Link  href="/makeups">All</Link>
+								<Link href="/makeups">All</Link>
 								<li>Our shops</li>
 								<li>Gift Cards</li>
 								<li>Sell</li>

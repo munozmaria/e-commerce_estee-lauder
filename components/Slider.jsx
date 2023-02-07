@@ -1,16 +1,11 @@
-import {Swiper, SwiperSlide} from "swiper/react";
-import { Navigation, Thumbs } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Thumbs } from "swiper"
 
+import React from "react"
+import PropTypes from "prop-types"
 
-
-import React from 'react'
-import PropTypes from 'prop-types'
-
-
-
-const Slider = props => {
-
-  return (
+const Slider = (props) => {
+	return (
 		<div>
 			<Swiper
 				loop={true}
@@ -30,10 +25,7 @@ const Slider = props => {
 }
 
 Slider.propTypes = {
-	images: PropTypes.array.isRequired
-     
-    
-  
+	images: PropTypes.array.isRequired,
 }
 
 export default Slider

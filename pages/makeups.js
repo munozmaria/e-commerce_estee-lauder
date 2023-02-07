@@ -1,7 +1,6 @@
-import React from 'react'
-import Layout from '../components/Layout'
-import { Products } from '../components/Products'
-
+import React from "react"
+import Layout from "../components/Layout"
+import { Products } from "../components/Products"
 
 const Makeups = ({ productsApi, cart, deleteProduct, updateQuantity }) => {
 	console.log(productsApi)
@@ -26,16 +25,15 @@ const Makeups = ({ productsApi, cart, deleteProduct, updateQuantity }) => {
 }
 
 export async function getStaticProps() {
-     const url = `${process.env.API_URL}/makeups?populate=*`
-			const response = await fetch(url)
-  const productsApi = await response.json()
+	const url = `${process.env.API_URL}/makeups?populate=*`
+	const response = await fetch(url)
+	const productsApi = await response.json()
 
-    return {
-			props: {
-				productsApi: productsApi,
-			
-			},
-		}
+	return {
+		props: {
+			productsApi: productsApi,
+		},
+	}
 }
 
 export default Makeups

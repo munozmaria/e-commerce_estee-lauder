@@ -1,9 +1,7 @@
-import Link from "next/link";
-import Layout from "../components/Layout";
+import Link from "next/link"
+import Layout from "../components/Layout"
 
 export default function page404(props) {
-	
-
 	return (
 		<>
 			<Layout>
