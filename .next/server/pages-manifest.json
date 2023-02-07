@@ -3,8 +3,8 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/404": "pages/404.html",
-  "/cart": "pages/cart.html",
   "/": "pages/index.html",
+  "/cart": "pages/cart.html",
   "/makeups": "pages/makeups.js",
   "/makeups/[slug]": "pages/makeups/[slug].js"
 }
