@@ -16,7 +16,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 	const buttonRef = useRef(null)
 	useOutsideAlerter(wrapperRef, buttonRef)
 
-	function useOutsideAlerter(ref, ref2) {
+	function useOutsideAlerter(ref, ref2, ) {
 		useEffect(() => {
 			setPageIsCart(window.location.pathname === "/cart")
 			function handleClickOutside(event) {
@@ -35,7 +35,7 @@ export const Header = ({ cart, deleteProduct, updateQuantity }) => {
 			return () => {
 				document.removeEventListener("mousedown", handleClickOutside)
 			}
-		}, [ref, ref2, cartIsOpen])
+		}, [cartIsOpen])
 	}
 
 	return (
