@@ -3,7 +3,7 @@
 # Built with NextJS, Strapi and Tailwind
 
 ## Overview ##
- - - - -
+
 
 
 
