@@ -1,13 +1,15 @@
 module.exports = ({ env }) => ({
-  "vercel-deploy": {
-    enabled: true,
-    config: {
-      deployHook: process.env.VERCEL_DEPLOY_PLUGIN_HOOK,
-      apiToken: process.env.VERCEL_DEPLOY_PLUGIN_API_TOKEN,
-      appFilter: process.env.VERCEL_DEPLOY_PLUGIN_APP_FILTER,
-      teamFilter: process.env.VERCEL_DEPLOY_PLUGIN_TEAM_FILTER,
-      roles: ["strapi-super-admin"],
+  connection: {
+    client: "postgres",
+    connection: {
+      host: env("DATABASE_HOST"),
+      port: env.int("DATABASE_PORT"),
+      database: env("DATABASE_NAME"),
+      user: env("DATABASE_USERNAME"),
+      password: env("DATABASE_PASSWORD"),
+      ssl: env.bool("DATABASE_SSL", true),
     },
+    debug: false,
   },
   upload: {
     config: {
