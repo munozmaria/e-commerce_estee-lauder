@@ -27,8 +27,14 @@ $ git clone https://github.com/your-user-name/your-project-name
 # Install dependencies both in back and front folders
 $ npm install
 
-# Run the app in both front and back folders
+# Run the app in front folder:
 $ npm run dev
+
+# ... and back folder (cd laurent_strapi):
+$ npm run develop
+
+
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

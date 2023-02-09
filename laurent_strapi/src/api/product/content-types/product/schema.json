@@ -21,10 +21,12 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {}
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {}
     },
     "slug2": {
       "type": "uid",

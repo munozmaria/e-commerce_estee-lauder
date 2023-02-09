@@ -14,11 +14,13 @@
   "attributes": {
     "brand": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     },
     "description": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     },
     "image": {
       "type": "media",
@@ -26,24 +28,29 @@
       "required": true,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {}
     },
     "content": {
       "type": "richtext",
-      "required": true
+      "required": true,
+      "pluginOptions": {}
     },
     "slug": {
       "type": "uid",
       "targetField": "description"
     },
     "price": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {}
     },
     "discount": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {}
     },
     "final_price": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {}
     },
     "thumbs": {
       "type": "media",
@@ -54,7 +61,8 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {}
     }
   }
 }
